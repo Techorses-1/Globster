@@ -1,0 +1,340 @@
+// ==========================================================================
+// PricingShowcase.scss
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-bg: #e8ede0;;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.pricing-showcase {
+  position: relative;
+  width: 100%;
+  background: #f7f8fb;
+
+  &__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+
+    --ps-gutter: 90px;
+    padding-top: 130px;
+    padding-bottom: 130px;
+    padding-left: var(--ps-gutter);
+    padding-right: var(--ps-gutter);
+
+    @media (max-width: 1280px) {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      --ps-gutter: 60px;
+    }
+
+    @media (max-width: 1024px) {
+      padding-top: 90px;
+      padding-bottom: 90px;
+      --ps-gutter: 44px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      --ps-gutter: 32px;
+    }
+
+    @media (max-width: 640px) {
+      padding-top: 56px;
+      padding-bottom: 56px;
+      --ps-gutter: 20px;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 80px;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 58px;
+    }
+
+    @media (max-width: 640px) {
+      margin-bottom: 42px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: $color-orange;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    font-size: 14px;
+    margin-bottom: 16px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 auto;
+
+    font-size: 40px;
+    max-width: 620px;
+
+    @media (max-width: 1024px) {
+      font-size: 32px;
+      max-width: 520px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 25px;
+      max-width: 100%;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+
+    gap: 30px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: $color-white;
+    border: 1px solid rgba($color-black, 0.08);
+    border-radius: 24px;
+
+    padding: 40px 34px;
+
+    @media (max-width: 1280px) {
+      padding: 34px 28px;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 32px 26px;
+    }
+
+    @media (max-width: 640px) {
+      padding: 26px 22px;
+      border-radius: 20px;
+    }
+  }
+
+  &__card--popular {
+    border-color: $color-orange;
+    box-shadow: 0 30px 60px rgba($color-black, 0.1);
+    background:  rgba($color-bg, 0.5);
+
+    @media (min-width: 1025px) {
+      transform: scale(1.04);
+      z-index: 1;
+    }
+
+    @media (max-width: 1024px) {
+      order: -1;
+    }
+  }
+
+  &__ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-orange;
+    color: $color-white;
+    border-radius: 999px;
+    font-family: $font-body;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+
+    padding: 7px 18px;
+    font-size: 12.5px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba($color-navy, 0.08);
+    color: $color-navy;
+
+    width: 52px;
+    height: 52px;
+    margin-bottom: 22px;
+
+    @media (max-width: 640px) {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+
+      svg {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  }
+
+  &__card--popular &__icon {
+    background: $color-orange;
+    color: $color-white;
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.25;
+
+    font-size: 24px;
+    margin: 0 0 12px;
+
+    @media (max-width: 640px) {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.6);
+    line-height: 1.65;
+
+    font-size: 14.5px;
+    margin: 0 0 26px;
+
+    @media (max-width: 640px) {
+      font-size: 13.5px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__included-label {
+    display: block;
+    font-family: $font-body;
+    font-weight: 600;
+    color: $color-black;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    font-size: 12px;
+    margin-bottom: 16px;
+    padding-top: 22px;
+    border-top: 1px solid rgba($color-black, 0.08);
+
+    @media (max-width: 640px) {
+      margin-bottom: 12px;
+      padding-top: 18px;
+    }
+  }
+
+  &__features {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+    flex: 1;
+
+    @media (max-width: 640px) {
+      gap: 11px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.72);
+    line-height: 1.4;
+
+    font-size: 14px;
+    gap: 10px;
+
+    svg {
+      flex-shrink: 0;
+      color: $color-orange;
+      margin-top: 1px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: $font-body;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1.5px solid $color-navy;
+    color: $color-navy;
+    background: transparent;
+
+    padding: 15px;
+    font-size: 14.5px;
+    margin-top: auto;
+
+    transition: background-color 0.25s ease, color 0.25s ease,
+      transform 0.25s ease;
+
+    &:hover {
+      background: $color-orange;
+      color: $color-white;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 13px;
+      font-size: 13.5px;
+    }
+  }
+
+  &__card--popular &__button {
+    background: $color-orange;
+    border-color: $color-orange;
+    color: $color-white;
+
+    &:hover {
+      background: $color-orange;
+      border-color: $color-navy;
+    }
+  }
+}

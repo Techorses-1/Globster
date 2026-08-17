@@ -1,0 +1,285 @@
+// ==========================================================================
+// NotFound.scss
+// Cursive accent font: Caveat (add to your Google Fonts <link> if not
+// already added from the Make An Order / Contact sections).
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+$font-cursive: "Great Vibes", cursive;
+
+
+@keyframes not-found-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.not-found {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: $color-white;
+
+  margin-top: 77px;
+  min-height: calc(100vh - 77px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 640px) {
+    margin-top: 65px;
+    min-height: calc(100vh - 65px);
+  }
+
+  &__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  &__glow--1 {
+    top: -120px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: rgba($color-navy, 0.14);
+
+    @media (max-width: 640px) {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  &__glow--2 {
+    bottom: -140px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba($color-orange, 0.14);
+
+    @media (max-width: 640px) {
+      width: 260px;
+      height: 260px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    --nf-gutter: 90px;
+    padding-left: var(--nf-gutter);
+    padding-right: var(--nf-gutter);
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @media (max-width: 1024px) {
+      --nf-gutter: 44px;
+    }
+
+    @media (max-width: 768px) {
+      --nf-gutter: 32px;
+    }
+
+    @media (max-width: 640px) {
+      --nf-gutter: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba($color-navy, 0.08);
+    color: $color-navy;
+    animation: not-found-float 3.2s ease-in-out infinite;
+
+    width: 68px;
+    height: 68px;
+    margin-bottom: 28px;
+
+    @media (max-width: 640px) {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 20px;
+
+      svg {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  }
+
+  &__number {
+    display: block;
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-navy;
+    line-height: 1;
+    letter-spacing: -0.02em;
+
+    font-size: 130px;
+    margin-bottom: 6px;
+
+    @media (max-width: 1024px) {
+      font-size: 100px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 74px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 62px;
+    }
+  }
+
+  &__number-accent {
+    color: $color-orange;
+  }
+
+  &__cursive {
+    display: block;
+    font-family: $font-cursive;
+    font-weight: 700;
+    color: $color-orange;
+    transform: rotate(-3deg);
+
+    font-size: 30px;
+    margin-bottom: 18px;
+
+    @media (max-width: 640px) {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+
+    font-size: 32px;
+
+    @media (max-width: 1024px) {
+      font-size: 27px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.62);
+    line-height: 1.7;
+    max-width: 460px;
+
+    font-size: 16px;
+    margin: 0 0 36px;
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13.5px;
+      margin-bottom: 26px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    font-family: $font-body;
+    font-weight: 600;
+    color: $color-white;
+    background: $color-orange;
+    border-radius: 999px;
+
+    padding: 15px 32px;
+    font-size: 15px;
+
+    transition: background-color 0.25s ease, transform 0.25s ease;
+
+    &:hover {
+      background: $color-navy;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 13px 28px;
+      font-size: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: $font-body;
+    font-weight: 600;
+    color: rgba($color-black, 0.6);
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 14.5px;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: $color-navy;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13.5px;
+    }
+  }
+}

@@ -1,0 +1,327 @@
+// ==========================================================================
+// GlobalContact.scss
+// "Coming Soon" placeholder for the Global Contact page.
+// Signature element: a small globe icon with two orbiting rings of dots,
+// tying the animation directly to the page's own name/subject.
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-sage: #e8ede0;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+$font-cursive: "Great Vibes", cursive;
+
+@keyframes global-contact-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.global-contact {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: $color-white;
+
+  margin-top: 77px;
+  min-height: calc(100vh - 77px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 640px) {
+    margin-top: 65px;
+    min-height: calc(100vh - 65px);
+  }
+
+  &__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  &__glow--1 {
+    top: -120px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: rgba($color-navy, 0.14);
+
+    @media (max-width: 640px) {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  &__glow--2 {
+    bottom: -140px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba($color-orange, 0.14);
+
+    @media (max-width: 640px) {
+      width: 260px;
+      height: 260px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    --gc-gutter: 90px;
+    padding-left: var(--gc-gutter);
+    padding-right: var(--gc-gutter);
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @media (max-width: 1024px) {
+      --gc-gutter: 44px;
+    }
+
+    @media (max-width: 768px) {
+      --gc-gutter: 32px;
+    }
+
+    @media (max-width: 640px) {
+      --gc-gutter: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  // ==========================================================================
+  // Signature element — globe + two orbit rings of dots
+  // ==========================================================================
+
+  &__orbit-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 190px;
+    height: 190px;
+    margin-bottom: 34px;
+
+    @media (max-width: 640px) {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__badge {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $color-sage;
+    color: $color-navy;
+    animation: global-contact-float 3.4s ease-in-out infinite;
+
+    width: 68px;
+    height: 68px;
+
+    @media (max-width: 640px) {
+      width: 54px;
+      height: 54px;
+
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+
+  &__orbit-ring {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__orbit-ring--reverse {
+    inset: 0;
+  }
+
+  &__orbit-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+
+    width: 9px;
+    height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+
+    @media (max-width: 640px) {
+      width: 7px;
+      height: 7px;
+      margin: -3.5px 0 0 -3.5px;
+    }
+  }
+
+  &__orbit-dot--1 {
+    background: $color-orange;
+    transform: rotate(0deg) translate(95px);
+
+    @media (max-width: 640px) {
+      transform: rotate(0deg) translate(70px);
+    }
+  }
+
+  &__orbit-dot--2 {
+    background: $color-navy;
+    transform: rotate(120deg) translate(95px);
+
+    @media (max-width: 640px) {
+      transform: rotate(120deg) translate(70px);
+    }
+  }
+
+  &__orbit-dot--3 {
+    background: $color-orange;
+    transform: rotate(240deg) translate(95px);
+
+    @media (max-width: 640px) {
+      transform: rotate(240deg) translate(70px);
+    }
+  }
+
+  &__orbit-dot--4 {
+    background: $color-navy;
+    opacity: 0.6;
+    transform: rotate(60deg) translate(72px);
+
+    @media (max-width: 640px) {
+      transform: rotate(60deg) translate(54px);
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: $color-orange;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    font-size: 14px;
+    margin-bottom: 12px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__cursive {
+    display: block;
+    font-family: $font-cursive;
+    font-weight: 700;
+    color: $color-orange;
+    transform: rotate(-3deg);
+
+    font-size: 28px;
+    margin-bottom: 18px;
+
+    @media (max-width: 640px) {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+
+    font-size: 36px;
+
+    @media (max-width: 1024px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.62);
+    line-height: 1.7;
+    max-width: 460px;
+
+    font-size: 16px;
+    margin: 0 0 36px;
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13.5px;
+      margin-bottom: 26px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    font-family: $font-body;
+    font-weight: 600;
+    color: $color-white;
+    background: $color-orange;
+    border-radius: 999px;
+
+    padding: 15px 32px;
+    font-size: 15px;
+
+    transition: background-color 0.25s ease, transform 0.25s ease;
+
+    &:hover {
+      background: $color-navy;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 13px 28px;
+      font-size: 14px;
+    }
+  }
+}

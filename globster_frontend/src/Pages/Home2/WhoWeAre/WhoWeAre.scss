@@ -1,0 +1,372 @@
+// ==========================================================================
+// WhoWeAre2.scss
+// Fonts: Poppins (heading), Inter (body/UI), Roboto Slab (eyebrow)
+// Colors: white / black / #003185 (navy) / #ff5e0e (orange)
+// No clamp() used — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+// $color-navy: #003185;
+// $color-orange: #ff5e0e;
+
+$color-navy: #1f2937;
+$color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.who2 {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+    overflow: hidden;
+
+    padding: 50px 0px;
+
+    @media (max-width: 1280px) {
+        padding: 120px 0px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 100px 0px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 80px 0px;
+    }
+
+    @media (max-width: 640px) {
+        padding: 60px 0px;
+    }
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 100px;
+        align-items: center;
+
+        @media (max-width: 1280px) {
+            gap: 70px;
+        }
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+            gap: 56px;
+            padding-left: 44px;
+            padding-right: 44px;
+        }
+        @media (max-width: 768px) {
+            
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
+
+    // ==========================================================================
+    // Visual side
+    // ==========================================================================
+
+    &__visual {
+        position: relative;
+        justify-self: center;
+
+        @media (max-width: 1024px) {
+            max-width: 460px;
+            width: 100%;
+            justify-self: center;
+        }
+    }
+
+    &__visual-shape {
+        position: absolute;
+        top: -28px;
+        left: -28px;
+        width: 100%;
+        height: 100%;
+        background: $color-navy;
+        border-radius: 24px;
+        z-index: 0;
+
+        @media (max-width: 640px) {
+            top: -16px;
+            left: -16px;
+            border-radius: 18px;
+        }
+    }
+
+    &__image-main {
+        position: relative;
+        z-index: 1;
+        border-radius: 24px;
+        overflow: hidden;
+
+        width: 440px;
+        height: 540px;
+
+        box-shadow: 0 30px 60px rgba($color-black, 0.18);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 1280px) {
+            width: 380px;
+            height: 470px;
+        }
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            height: 420px;
+        }
+
+        @media (max-width: 640px) {
+            height: 320px;
+            border-radius: 18px;
+        }
+    }
+
+    &__image-badge {
+        position: absolute;
+        z-index: 2;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 5px solid $color-white;
+        box-shadow: 0 16px 36px rgba($color-black, 0.2);
+
+        width: 160px;
+        height: 160px;
+        bottom: -30px;
+        right: -30px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 1280px) {
+            width: 130px;
+            height: 130px;
+            bottom: -22px;
+            right: -22px;
+        }
+
+        @media (max-width: 640px) {
+            width: 96px;
+            height: 96px;
+            bottom: -16px;
+            right: -16px;
+            border-width: 4px;
+        }
+    }
+
+    // ==========================================================================
+    // Content side
+    // ==========================================================================
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+
+        font-size: 42px;
+        margin: 0 0 26px;
+
+        @media (max-width: 1280px) {
+            font-size: 36px;
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 26px;
+            margin-bottom: 18px;
+            line-height: 1.24;
+        }
+    }
+
+    &__paragraph {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.68);
+        line-height: 1.7;
+
+        font-size: 16px;
+        margin: 0 0 20px;
+
+        @media (max-width: 1024px) {
+            font-size: 15.5px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        &--services-intro {
+            color: $color-black;
+            font-weight: 500;
+            margin-bottom: 22px;
+
+            @media (max-width: 640px) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    // ---- Feature strip ----
+    &__features {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+
+        margin: 6px 0 30px;
+        padding: 0;
+        gap: 12px 24px;
+
+        @media (max-width: 640px) {
+            margin: 4px 0 22px;
+            gap: 10px 16px;
+        }
+    }
+
+    &__feature {
+        display: flex;
+        align-items: center;
+        font-family: $font-body;
+        font-weight: 500;
+        color: $color-navy;
+
+        font-size: 14.5px;
+        gap: 8px;
+
+        svg {
+            color: $color-orange;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13px;
+        }
+    }
+
+    // ---- Services grid ----
+    &__services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 480px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    }
+
+    &__service {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba($color-navy, 0.04);
+        border: 1px solid rgba($color-navy, 0.1);
+        border-radius: 14px;
+        cursor: default;
+
+        padding: 18px 16px;
+        gap: 12px;
+
+        transition: border-color 0.25s ease, background-color 0.25s ease,
+            box-shadow 0.25s ease;
+
+        &:hover {
+            border-color: rgba($color-orange, 0.5);
+            background: rgba($color-orange, 0.06);
+            box-shadow: 0 12px 24px rgba($color-black, 0.06);
+        }
+
+        @media (max-width: 640px) {
+            padding: 14px 12px;
+            gap: 8px;
+            border-radius: 12px;
+        }
+    }
+
+    &__service-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: #283618;
+        color: $color-white;
+
+        width: 40px;
+        height: 40px;
+
+        @media (max-width: 640px) {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    &__service-label {
+        font-family: $font-body;
+        font-weight: 600;
+        color: $color-black;
+        line-height: 1.35;
+
+        font-size: 14px;
+
+        @media (max-width: 640px) {
+            font-size: 12.5px;
+        }
+    }
+}

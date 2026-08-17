@@ -1,0 +1,221 @@
+// ==========================================================================
+// ServicesHype.scss
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed
+// (the marquee strip is meant to bleed edge-to-edge, and its inner track
+// stays clipped by overflow: hidden, so it can never cause page scroll).
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-navy-deep: #111827;
+$color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+@keyframes services-hype-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.services-hype {
+  position: relative;
+  width: 100%;
+  background: $color-white;
+  overflow: hidden;
+
+  &__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+
+    --sh-gutter: 90px;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    padding-left: var(--sh-gutter);
+    padding-right: var(--sh-gutter);
+
+    @media (max-width: 1280px) {
+      padding-top: 120px;
+      --sh-gutter: 60px;
+    }
+
+    @media (max-width: 1024px) {
+      padding-top: 100px;
+      padding-bottom: 56px;
+      --sh-gutter: 44px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 80px;
+      padding-bottom: 46px;
+      --sh-gutter: 32px;
+    }
+
+    @media (max-width: 640px) {
+      padding-top: 60px;
+      padding-bottom: 36px;
+      --sh-gutter: 20px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: $color-orange;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    font-size: 14px;
+    margin-bottom: 24px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 26px;
+
+    font-size: 48px;
+
+    @media (max-width: 1280px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 33px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 27px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 21px;
+      margin-bottom: 16px;
+      line-height: 1.28;
+    }
+  }
+
+  &__word {
+    display: inline-block;
+  }
+
+  &__word--accent {
+    color: $color-orange;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__subtext {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.6);
+    line-height: 1.65;
+    margin: 0 auto;
+    max-width: 480px;
+
+    font-size: 16px;
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13.5px;
+    }
+  }
+
+  // ==========================================================================
+  // Infinite marquee strip
+  // ==========================================================================
+
+  &__marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #e8ede0;
+
+    padding: 26px 0;
+
+    @media (max-width: 640px) {
+      padding: 18px 0;
+    }
+
+    &:hover .services-hype__marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  &__marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: services-hype-marquee 26s linear infinite;
+
+    @media (max-width: 640px) {
+      animation-duration: 18s;
+    }
+  }
+
+  &__marquee-item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: rgba($color-black, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    font-size: 18px;
+    padding: 0 28px;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: $color-orange;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+      padding: 0 22px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+      padding: 0 16px;
+    }
+  }
+
+  &__marquee-dot {
+    margin-left: 28px;
+    color: $color-orange;
+
+    @media (max-width: 1024px) {
+      margin-left: 22px;
+    }
+
+    @media (max-width: 640px) {
+      margin-left: 16px;
+    }
+  }
+}

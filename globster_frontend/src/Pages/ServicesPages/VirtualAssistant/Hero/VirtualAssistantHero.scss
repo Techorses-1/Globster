@@ -1,0 +1,240 @@
+// ==========================================================================
+// VirtualAssistantHero.scss
+// Same visual language as the other service page heroes, static (no slider).
+// Padding lives on the INNER content div only — outer <section> and the
+// image wrap stay full-bleed, so nothing can cause horizontal scroll.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.va-hero {
+    position: relative;
+    width: 100%;
+    height: 89vh;
+    overflow: hidden;
+    background: $color-black;
+    margin-top: 77px;
+
+    // ---- Height per breakpoint ----
+    @media (max-width: 1024px) {
+        height: 80vh;
+        margin-top: 77px;
+    }
+
+    @media (max-width: 640px) {
+        height: 60vh;
+        margin-top: 65px;
+    }
+
+    &__image-wrap {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        // background: linear-gradient(100deg,
+        //         rgba($color-black, 0.78) 0%,
+        //         rgba($color-black, 0.58) 32%,
+        //         rgba($color-navy, 0.42) 55%,
+        //         rgba($color-black, 0.22) 78%,
+        //         rgba($color-black, 0.12) 100%);
+    }
+
+    &__content-wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        max-width: 720px;
+        color: $color-white;
+
+        --va-hero-gutter: 90px;
+        padding-left: var(--va-hero-gutter);
+        padding-right: var(--va-hero-gutter);
+
+        @media (max-width: 1280px) {
+            --va-hero-gutter: 60px;
+            max-width: 640px;
+        }
+
+        @media (max-width: 1024px) {
+            --va-hero-gutter: 44px;
+            max-width: 560px;
+        }
+
+        @media (max-width: 768px) {
+            --va-hero-gutter: 32px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            --va-hero-gutter: 20px;
+        }
+    }
+
+    &__breadcrumb {
+        display: flex;
+        align-items: center;
+        font-family: $font-body;
+        font-weight: 500;
+        color: rgba($color-white, 0.7);
+
+        font-size: 14px;
+        gap: 8px;
+        margin-bottom: 20px;
+
+        a {
+            color: rgba($color-white, 0.7);
+            text-decoration: none;
+            transition: color 0.25s ease;
+
+            &:hover {
+                color: $color-orange;
+            }
+        }
+
+        span:last-child {
+            color: $color-orange;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 18px;
+
+        @media (max-width: 1024px) {
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.14;
+        letter-spacing: -0.01em;
+        margin: 0 0 18px;
+
+        font-size: 52px;
+
+        @media (max-width: 1280px) {
+            font-size: 44px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 38px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 26px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 22px;
+        }
+    }
+
+    &__one-liner {
+        font-family: $font-accent;
+        font-weight: 400;
+        font-style: italic;
+        color: $color-orange;
+        margin: 0 0 16px;
+
+        font-size: 18px;
+
+        @media (max-width: 1024px) {
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 13px;
+        }
+    }
+
+    &__description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.86);
+        line-height: 1.6;
+        max-width: 480px;
+
+        font-size: 17px;
+        margin: 0;
+
+        @media (max-width: 1024px) {
+            font-size: 15.5px;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 12.5px;
+        }
+    }
+}

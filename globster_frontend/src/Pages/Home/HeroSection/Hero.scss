@@ -1,0 +1,368 @@
+// ==========================================================================
+// Hero.scss
+// Fonts: Poppins (title), Roboto Slab (one-liner / counter), Inter (body)
+// Colors: white / black / #003185 (navy) / #ff5e0e (orange)
+// No clamp() used anywhere — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-orange: #ff5e0e;
+// $color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 89vh;
+    overflow: hidden;
+    background: $color-black;
+    margin-top: 77px;
+
+    // ---- Height per breakpoint ----
+    @media (max-width: 1024px) {
+        height: 80vh;
+        margin-top: 77px;
+    }
+
+    @media (max-width: 640px) {
+        height: 60vh;
+        margin-top: 65px;
+    }
+
+    &__slides {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        will-change: transform;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(100deg,
+                rgba($color-black, 0.78) 0%,
+                rgba($color-black, 0.58) 32%,
+                rgba($color-navy, 0.42) 55%,
+                rgba($color-black, 0.22) 78%,
+                rgba($color-black, 0.12) 100%);
+    }
+
+    // ---- Content ----
+    &__content-wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        max-width: 720px;
+        padding: 0 90px;
+        color: $color-white;
+
+        @media (max-width: 1280px) {
+            padding: 0 60px;
+            max-width: 640px;
+        }
+
+        @media (max-width: 1024px) {
+            padding: 0 44px;
+            max-width: 560px;
+        }
+
+        @media (max-width: 768px) {
+            padding: 0 32px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            padding: 0 20px;
+        }
+    }
+
+    &__counter {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.06em;
+        margin-bottom: 22px;
+
+        font-size: 15px;
+
+        @media (max-width: 1024px) {
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+    }
+
+    &__counter-divider {
+        color: rgba($color-white, 0.5);
+        margin: 0 2px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-white;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin: 0 0 18px;
+
+        font-size: 56px;
+
+        @media (max-width: 1280px) {
+            font-size: 48px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 40px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 34px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 26px;
+            margin-bottom: 10px;
+            line-height: 1.18;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 22px;
+        }
+    }
+
+    &__one-liner {
+        font-family: $font-accent;
+        font-weight: 400;
+        font-style: italic;
+        color: $color-orange;
+        margin: 0 0 16px;
+
+        font-size: 19px;
+
+        @media (max-width: 1024px) {
+            font-size: 17px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 13px;
+        }
+    }
+
+    &__description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-white, 0.86);
+        line-height: 1.6;
+        margin: 0 0 36px;
+
+        font-size: 17px;
+        max-width: 520px;
+
+        @media (max-width: 1024px) {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 15px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13px;
+            margin-bottom: 22px;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 12px;
+        }
+    }
+
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $font-body;
+        font-weight: 600;
+        text-decoration: none;
+        color: $color-white;
+        background: $color-orange;
+        border-radius: 999px;
+
+        padding: 16px 38px;
+        font-size: 16px;
+
+        @media (max-width: 1024px) {
+            padding: 14px 32px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 11px 24px;
+            font-size: 13px;
+        }
+    }
+
+    // ---- Arrows (grouped, bottom-right) ----
+    &__arrows {
+        position: absolute;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+
+        bottom: 34px;
+        right: 90px;
+        gap: 12px;
+
+        @media (max-width: 1280px) {
+            right: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            right: 44px;
+            bottom: 26px;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            right: 32px;
+        }
+
+        @media (max-width: 640px) {
+            display: none;
+        }
+    }
+
+    &__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: none;
+        background: $color-orange;
+        color: $color-white;
+        cursor: pointer;
+
+        width: 52px;
+        height: 52px;
+
+        @media (max-width: 1024px) {
+            width: 44px;
+            height: 44px;
+        }
+    }
+
+    // ---- Dots ----
+    &__dots {
+        position: absolute;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+
+        bottom: 34px;
+        left: 90px;
+        gap: 10px;
+
+        @media (max-width: 1280px) {
+            left: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            left: 44px;
+            bottom: 26px;
+        }
+
+        @media (max-width: 768px) {
+            left: 32px;
+        }
+
+        @media (max-width: 640px) {
+            left: 20px;
+            bottom: 16px;
+            gap: 7px;
+        }
+    }
+
+    &__dot {
+        position: relative;
+        border: none;
+        background: rgba($color-white, 0.3);
+        border-radius: 999px;
+        cursor: pointer;
+        padding: 0;
+        overflow: hidden;
+        transition: background-color 0.25s ease, width 0.35s ease;
+
+        width: 10px;
+        height: 10px;
+
+        @media (max-width: 640px) {
+            width: 7px;
+            height: 7px;
+        }
+
+        &.is-active {
+            width: 34px;
+            background: rgba($color-white, 0.3);
+
+            @media (max-width: 640px) {
+                width: 22px;
+            }
+
+            .hero__dot-fill {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    &__dot-fill {
+        position: absolute;
+        inset: 0;
+        background: $color-orange;
+        border-radius: inherit;
+        transform-origin: left center;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+}

@@ -1,0 +1,350 @@
+// ==========================================================================
+// WhyGlobsterProof.scss — Option 3: Proof Cards with mini illustrated visuals
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-orange: #ff5e0e;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.why-proof {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --why-gutter: 90px;
+        padding-top: 50px;
+    padding-bottom: 50px;
+        padding-left: var(--why-gutter);
+        padding-right: var(--why-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 110px;
+            padding-bottom: 110px;
+            --why-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --why-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            --why-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 56px;
+            padding-bottom: 56px;
+            --why-gutter: 20px;
+        }
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 80px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 58px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 42px;
+        }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        margin: 0 auto;
+
+        font-size: 40px;
+        max-width: 620px;
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+            max-width: 520px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 25px;
+            max-width: 100%;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 28px;
+
+        @media (max-width: 1024px) {
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #f7f8fb;
+        border: 1px solid rgba($color-black, 0.06);
+        border-radius: 22px;
+        cursor: default;
+
+        padding: 36px 32px;
+
+        transition: box-shadow 0.3s ease, border-color 0.3s ease,
+            background-color 0.3s ease;
+
+        &:hover {
+            background: $color-white;
+            border-color: rgba($color-orange, 0.35);
+            box-shadow: 0 20px 44px rgba($color-black, 0.08);
+        }
+
+        @media (max-width: 1024px) {
+            padding: 30px 26px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 26px 22px;
+            border-radius: 18px;
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.28;
+
+        font-size: 21px;
+        margin: 0 0 12px;
+
+        @media (max-width: 1024px) {
+            font-size: 19px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.62);
+        line-height: 1.65;
+
+        font-size: 15px;
+        margin: 0;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+}
+
+// ==========================================================================
+// Mini illustrated visuals
+// ==========================================================================
+
+.proof-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    margin-bottom: 26px;
+
+    @media (max-width: 640px) {
+        height: 58px;
+        margin-bottom: 18px;
+    }
+
+    // ---- Card 1: overlapping avatar stack, front one selected ----
+    &--choose {
+        .proof-visual__avatar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: $color-white;
+            border: 2px solid rgba($color-navy, 0.18);
+            color: rgba($color-navy, 0.4);
+
+            width: 52px;
+            height: 52px;
+            margin-right: -16px;
+
+            @media (max-width: 640px) {
+                width: 44px;
+                height: 44px;
+                margin-right: -14px;
+            }
+        }
+
+        .proof-visual__avatar--front {
+            z-index: 2;
+            background: $color-navy;
+            border-color: $color-navy;
+            color: $color-white;
+            margin-right: 0;
+
+            width: 58px;
+            height: 58px;
+
+            @media (max-width: 640px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .proof-visual__avatar--mid {
+            z-index: 1;
+        }
+
+        .proof-visual__check {
+            position: absolute;
+            bottom: -3px;
+            right: -3px;
+            display: flex;
+            background: $color-white;
+            border-radius: 50%;
+            color: $color-orange;
+        }
+    }
+
+    // ---- Card 2: primary + dashed backup ring ----
+    &--backup {
+        .proof-visual__ring {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            width: 58px;
+            height: 58px;
+
+            @media (max-width: 640px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .proof-visual__ring--dashed {
+            position: relative;
+            border: 2px dashed rgba($color-orange, 0.5);
+            color: $color-orange;
+            margin-right: -20px;
+
+            @media (max-width: 640px) {
+                margin-right: -17px;
+            }
+        }
+
+        .proof-visual__ring--solid {
+            position: relative;
+            z-index: 1;
+            background: $color-navy;
+            color: $color-white;
+        }
+    }
+
+    // ---- Card 3: globe with orbiting clock badges ----
+    &--time {
+        width: 90px;
+
+        .proof-visual__globe {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: $color-navy;
+            color: $color-white;
+
+            width: 64px;
+            height: 64px;
+
+            @media (max-width: 640px) {
+                width: 54px;
+                height: 54px;
+            }
+        }
+
+        .proof-visual__clock {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: $color-white;
+            border: 2px solid rgba($color-navy, 0.12);
+            color: $color-orange;
+
+            width: 28px;
+            height: 28px;
+
+            @media (max-width: 640px) {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .proof-visual__clock--1 {
+            top: -6px;
+            right: 6px;
+        }
+
+        .proof-visual__clock--2 {
+            bottom: -4px;
+            right: -8px;
+        }
+
+        .proof-visual__clock--3 {
+            bottom: 6px;
+            left: -10px;
+        }
+    }
+}

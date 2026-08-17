@@ -1,0 +1,492 @@
+// ==========================================================================
+// MakeAnOrderDiagonal.scss — Option 3: Asymmetric Diagonal Split (v2)
+// Cursive accent font: Caveat (add to your Google Fonts <link>)
+//
+// REDESIGN NOTE: v1 clipped the navy panel to match the visual column
+// width exactly, which broke whenever the card's overlap didn't line up
+// with the clip math — leaving a visible gap (see the screenshot issue).
+// v2 fixes this by making the navy background shape deliberately WIDER
+// than the text column needs, so the card always overlaps it with margin
+// to spare — the two can never visibly separate again, at any width.
+//
+// Padding lives on inner elements — outer <section> only has vertical
+// padding + max-width/margin, no horizontal padding, so this can't cause
+// page-level horizontal scroll.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+$color-white: #ffffff;
+
+$color-black: #000000;
+$color-navy: #003185;
+$color-navy-deep: #001c50;
+$color-orange: #ff5e0e;
+
+
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+$font-cursive: "Great Vibes", cursive;
+
+.mao-diagonal {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #f7f8fb;
+
+    padding: 100px 0;
+
+    @media (max-width: 1024px) {
+        padding: 70px 0 0;
+    }
+
+    @media (max-width: 640px) {
+        padding-top: 50px;
+    }
+
+    // ---- Oversized skewed navy background shape ----
+    // Deliberately wider than the text column so the card (with its own
+    // negative margin) always overlaps it — no gap possible.
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 60%;
+        z-index: 0;
+        background: linear-gradient(150deg, $color-navy 0%, $color-navy-deep 100%);
+        clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
+        overflow: hidden;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            height: 340px;
+            clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+        }
+
+        @media (max-width: 640px) {
+            height: 420px;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+        }
+    }
+
+    &__glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        pointer-events: none;
+    }
+
+    &__glow--1 {
+        top: -60px;
+        left: 10%;
+        width: 220px;
+        height: 220px;
+        background: rgba($color-orange, 0.35);
+    }
+
+    &__glow--2 {
+        bottom: -80px;
+        left: 30%;
+        width: 260px;
+        height: 260px;
+        background: rgba($color-white, 0.08);
+    }
+
+    // ---- Layout wrapper (text panel + form card) ----
+    &__wrap {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+
+        min-height: 620px;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            align-items: stretch;
+            min-height: auto;
+        }
+    }
+
+    // ---- Text panel ----
+    &__panel {
+        position: relative;
+        flex: 0 0 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: $color-white;
+
+        padding: 70px 50px 70px 90px;
+
+        @media (max-width: 1280px) {
+            padding: 60px 40px 60px 70px;
+        }
+
+        @media (max-width: 1024px) {
+            flex: none;
+            width: 100%;
+            padding: 44px 44px 40px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 0px 20px 28px;
+            width: 95%;
+        }
+    }
+
+    &__tag {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 20px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+    }
+
+    &__quote-icon {
+        color: rgba($color-orange, 0.5);
+        margin-bottom: 12px;
+
+        @media (max-width: 640px) {
+            width: 26px;
+            height: 26px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__quote {
+        font-family: $font-heading;
+        font-weight: 600;
+        color: $color-white;
+        line-height: 1.35;
+        margin: 0 0 20px;
+
+        font-size: 33px;
+        max-width: 360px;
+
+        @media (max-width: 1280px) {
+            font-size: 27px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 25px;
+            max-width: 460px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 20px;
+            margin-bottom: 14px;
+            max-width: 300px;
+        }
+    }
+
+    &__cursive {
+        font-family: $font-cursive;
+        font-weight: 700;
+        color: $color-orange;
+
+        font-size: 1.4em;
+        line-height: 1;
+    }
+
+    &__sub {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-white, 0.7);
+        line-height: 1.7;
+
+        font-size: 15px;
+        max-width: 340px;
+        margin: 0 0 36px;
+
+        @media (max-width: 1024px) {
+            max-width: 500px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            margin-bottom: 24px;
+            max-width: 300px;
+        }
+    }
+
+    // ---- Stats row (fills the empty space, adds credibility) ----
+    &__stats {
+        display: flex;
+
+        gap: 30px;
+
+        @media (max-width: 640px) {
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__stat {
+        display: flex;
+        flex-direction: column;
+        padding-left: 16px;
+        border-left: 2px solid rgba($color-orange, 0.4);
+
+        &:first-child {
+            padding-left: 0;
+            border-left: none;
+        }
+    }
+
+    &__stat-value {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-white;
+
+        font-size: 22px;
+
+        @media (max-width: 640px) {
+            font-size: 19px;
+        }
+    }
+
+    &__stat-label {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-white, 0.6);
+
+        font-size: 11.5px;
+        margin-top: 3px;
+
+        @media (max-width: 640px) {
+            font-size: 10.5px;
+        }
+    }
+
+    // ---- Floating overlapping form card ----
+    // Overlaps generously into the (wider) navy bg shape — since the bg
+    // is always wider than the visual text column, this can never miss.
+    &__card {
+        position: relative;
+        flex: 1;
+        z-index: 2;
+        background: $color-white;
+        border-radius: 26px;
+        box-shadow: 0 30px 70px rgba($color-black, 0.16);
+
+        margin-left: -60px;
+        margin-right: 70px;
+        padding: 44px;
+
+        @media (max-width: 1280px) {
+            margin-left: -40px;
+            margin-right: 50px;
+            padding: 38px;
+        }
+
+        @media (max-width: 1024px) {
+            margin-left: 44px;
+            margin-right: 44px;
+            margin-top: -50px;
+            padding: 34px;
+        }
+
+        @media (max-width: 640px) {
+            margin-left: 18px;
+            margin-right: 18px;
+            margin-top: 75px;
+            margin-bottom: 25px;
+            padding: 24px 20px;
+            border-radius: 20px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        @media (max-width: 640px) {
+            gap: 16px;
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-family: $font-body;
+            font-weight: 600;
+            color: $color-black;
+
+            font-size: 13.5px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__input-wrap {
+        display: flex;
+        align-items: center;
+        border: 1.5px solid rgba($color-black, 0.12);
+        border-radius: 12px;
+        background: $color-white;
+
+        padding: 0 14px;
+        gap: 10px;
+        transition: border-color 0.25s ease;
+
+        svg {
+            flex-shrink: 0;
+            color: rgba($color-black, 0.35);
+        }
+
+        &:focus-within {
+            border-color: $color-orange;
+
+            svg {
+                color: $color-orange;
+            }
+        }
+
+        input,
+        select,
+        textarea {
+            flex: 1;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: $font-body;
+            color: $color-black;
+
+            font-size: 14.5px;
+            padding: 14px 0;
+
+            &::placeholder {
+                color: rgba($color-black, 0.35);
+            }
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999999' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
+            padding-right: 20px;
+        }
+    }
+
+    &__input-wrap--textarea {
+        align-items: flex-start;
+        padding-top: 12px;
+
+        svg {
+            margin-top: 14px;
+        }
+
+        textarea {
+            resize: none;
+            padding: 12px 0;
+        }
+    }
+
+    &__error {
+        display: block;
+        font-family: $font-body;
+        color: #d92d20;
+
+        font-size: 12.5px;
+        margin-top: 6px;
+    }
+
+    &__checkbox-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: pointer;
+
+        input {
+            margin-top: 3px;
+            width: 16px;
+            height: 16px;
+            accent-color: $color-orange;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        span {
+            font-family: $font-body;
+            color: rgba($color-black, 0.65);
+            line-height: 1.5;
+
+            font-size: 13px;
+        }
+
+        a {
+            color: $color-navy;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+
+    &__submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 999px;
+        background: $color-orange;
+        color: $color-white;
+        font-family: $font-body;
+        font-weight: 600;
+        cursor: pointer;
+
+        padding: 16px;
+        font-size: 15.5px;
+        margin-top: 6px;
+
+        transition: background-color 0.25s ease, transform 0.25s ease;
+
+        &:hover:not(:disabled) {
+            background: $color-navy;
+            transform: translateY(-2px);
+        }
+
+        &:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+    }
+}

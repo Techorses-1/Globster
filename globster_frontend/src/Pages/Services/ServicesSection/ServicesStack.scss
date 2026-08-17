@@ -1,0 +1,312 @@
+// ==========================================================================
+// ServicesStack.scss — Option 2: Stacked Card Reveal (Sticky Deck)
+// Each card sticks in place while the next one scrolls up and covers it,
+// built purely with position: sticky (no scroll-linked JS needed).
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-orange: #ff5e0e;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.services-stack {
+  position: relative;
+  width: 100%;
+  background: #f7f8fb;
+
+  --ss-gutter: 90px;
+  padding-top: 130px;
+  padding-bottom: 60px;
+
+  @media (max-width: 1280px) {
+    padding-top: 110px;
+    --ss-gutter: 60px;
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 90px;
+    --ss-gutter: 44px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 70px;
+    --ss-gutter: 32px;
+  }
+
+  @media (max-width: 640px) {
+    padding-top: 56px;
+    padding-bottom: 30px;
+    --ss-gutter: 20px;
+  }
+
+  &__header {
+    max-width: 1320px;
+    margin: 0 auto;
+    text-align: center;
+
+    padding-left: var(--ss-gutter);
+    padding-right: var(--ss-gutter);
+    margin-bottom: 90px;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 640px) {
+      margin-bottom: 44px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: $color-orange;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    font-size: 14px;
+    margin-bottom: 16px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 auto;
+
+    font-size: 36px;
+    max-width: 640px;
+
+    @media (max-width: 1024px) {
+      font-size: 29px;
+      max-width: 520px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 22px;
+      max-width: 100%;
+    }
+  }
+
+  &__deck {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    padding-left: var(--ss-gutter);
+    padding-right: var(--ss-gutter);
+  }
+
+  &__wrapper {
+    position: relative;
+
+    height: 100vh;
+
+    &:last-child {
+      height: auto;
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      height: 90vh;
+    }
+
+    @media (max-width: 640px) {
+      height: 78vh;
+    }
+  }
+
+  &__card {
+    position: sticky;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: stretch;
+    background: $color-white;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba($color-black, 0.14);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__image-side {
+    position: relative;
+
+    min-height: 240px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    @media (max-width: 768px) {
+      min-height: 180px;
+    }
+
+    @media (max-width: 640px) {
+      min-height: 140px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: $color-orange;
+    color: $color-white;
+    box-shadow: 0 10px 22px rgba($color-black, 0.22);
+
+    width: 46px;
+    height: 46px;
+
+    @media (max-width: 640px) {
+      width: 40px;
+      height: 40px;
+      top: 12px;
+      left: 12px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  &__content-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 36px 40px;
+
+    @media (max-width: 1024px) {
+      padding: 30px 34px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 26px 24px;
+    }
+
+    @media (max-width: 640px) {
+      padding: 20px 18px;
+    }
+  }
+
+  &__number {
+    font-family: $font-accent;
+    font-weight: 500;
+    color: rgba($color-navy, 0.4);
+
+    font-size: 13px;
+    margin-bottom: 10px;
+
+    @media (max-width: 640px) {
+      font-size: 11.5px;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__one-liner {
+    display: block;
+    font-family: $font-accent;
+    font-style: italic;
+    font-weight: 400;
+    color: $color-orange;
+
+    font-size: 14px;
+    margin-bottom: 8px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.28;
+
+    font-size: 23px;
+    margin: 0 0 12px;
+
+    @media (max-width: 1024px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.62);
+    line-height: 1.6;
+
+    font-size: 14.5px;
+    margin: 0 0 20px;
+
+    @media (max-width: 640px) {
+      font-size: 12.5px;
+      margin-bottom: 12px;
+      // keep short on very small screens so the sticky card doesn't
+      // exceed its wrapper's viewport height
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-body;
+    font-weight: 600;
+    text-decoration: none;
+    color: $color-orange;
+
+    font-size: 14.5px;
+
+    svg {
+      transition: transform 0.25s ease;
+    }
+
+    &:hover svg {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+}

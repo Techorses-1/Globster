@@ -1,0 +1,579 @@
+// ==========================================================================
+// VirtualAssistantContent.scss
+// Content section for the Virtual Assistant service page.
+// Adapted from the shared template: this content has no separate
+// "why it matters" bullet list, so that block only carries a heading +
+// lead paragraph next to the image. A short "...and much more" note sits
+// under the services grid instead.
+// Padding lives on the INNER wrapper only — outer <section> is full-bleed.
+// No clamp() — every breakpoint sets its own explicit values.
+//
+// Services grid rule (reusable across service pages):
+//   3 cards  -> plain 3-column row
+//   4 cards  -> row of 3, 4th centered below the middle card
+//   5 cards  -> row of 3, 2 more staggered below (between card 1&2, 2&3)
+//   6+ cards -> plain 3-column grid, wraps normally
+// Achieved with a 6-column grid so cards can sit on half-column offsets.
+// Collapses to a simple single column below 768px.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.va-content {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --va-gutter: 90px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        padding-left: var(--va-gutter);
+        padding-right: var(--va-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --va-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 76px;
+            padding-bottom: 76px;
+            --va-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 60px;
+            padding-bottom: 60px;
+            --va-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 48px;
+            padding-bottom: 48px;
+            --va-gutter: 20px;
+        }
+    }
+
+    // ==========================================================================
+    // Intro — centered
+    // ==========================================================================
+
+    &__intro {
+        max-width: 720px;
+        margin: 0 auto 90px;
+        text-align: center;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 64px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 44px;
+        }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__intro-heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        margin: 0 0 20px;
+
+        font-size: 40px;
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+    }
+
+    &__intro-lead {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.65);
+        line-height: 1.7;
+        margin: 0 auto;
+
+        font-size: 18px;
+
+        @media (max-width: 1024px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+    }
+
+    // ==========================================================================
+    // What We Offer — image + intro text (no bullet list on this page)
+    // ==========================================================================
+
+    &__what {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 60px;
+
+        @media (max-width: 1024px) {
+            gap: 40px;
+            margin-bottom: 44px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-bottom: 36px;
+        }
+    }
+
+    &__what-image {
+        border-radius: 22px;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 420px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 1024px) {
+            border-radius: 18px;
+
+            img {
+                max-height: 360px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            img {
+                max-height: 280px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            border-radius: 14px;
+
+            img {
+                max-height: 220px;
+            }
+        }
+    }
+
+    // ==========================================================================
+    // Shared block header (What We Offer / Our Services / Why Choose Us)
+    // ==========================================================================
+
+    &__block {
+        margin-bottom: 90px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 64px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 44px;
+        }
+    }
+
+    &__block-header {
+        margin-bottom: 44px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 34px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 26px;
+        }
+
+        &--left {
+            max-width: 520px;
+            margin-bottom: 0;
+        }
+
+        &--center {
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    }
+
+    &__block-heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-navy;
+        line-height: 1.25;
+        margin: 0 0 12px;
+
+        font-size: 30px;
+
+        @media (max-width: 1024px) {
+            font-size: 25px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__block-lead {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.62);
+        line-height: 1.65;
+        margin: 0;
+
+        font-size: 16.5px;
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+        }
+
+        &--cursive {
+            font-family: $font-accent;
+            font-style: italic;
+            color: $color-orange;
+        }
+    }
+
+    // ==========================================================================
+    // Our Services — staggered grid (6 tracks so cards can sit on half-offsets)
+    // ==========================================================================
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 28px;
+        row-gap: 34px;
+
+        @media (max-width: 1024px) {
+            gap: 20px;
+            row-gap: 26px;
+        }
+
+        // Below tablet, every layout just stacks — simplest and safest responsively.
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 16px;
+
+            .va-content__card {
+                grid-column: auto !important;
+            }
+        }
+
+        // 4 cards: 3 across the top, 4th centered under the middle card.
+        &--count-4 {
+            .va-content__card {
+                &:nth-child(1) {
+                    grid-column: 1 / 3;
+                }
+
+                &:nth-child(2) {
+                    grid-column: 3 / 5;
+                }
+
+                &:nth-child(3) {
+                    grid-column: 5 / 7;
+                }
+
+                &:nth-child(4) {
+                    grid-column: 3 / 5;
+                }
+            }
+        }
+
+        // 5 cards: 3 across the top, 2 more offset below — between 1&2, and 2&3.
+        &--count-5 {
+            .va-content__card {
+                &:nth-child(1) {
+                    grid-column: 1 / 3;
+                }
+
+                &:nth-child(2) {
+                    grid-column: 3 / 5;
+                }
+
+                &:nth-child(3) {
+                    grid-column: 5 / 7;
+                }
+
+                &:nth-child(4) {
+                    grid-column: 2 / 4;
+                }
+
+                &:nth-child(5) {
+                    grid-column: 4 / 6;
+                }
+            }
+        }
+    }
+
+    &__card {
+        background: #e8ede0;
+        border-radius: 18px;
+        text-align: center;
+
+        padding: 34px 30px;
+
+        @media (max-width: 1024px) {
+            padding: 26px 24px;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 22px 20px;
+        }
+    }
+
+    &__card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 22px;
+        border-radius: 12px;
+        background: $color-navy;
+        color: $color-white;
+
+        width: 52px;
+        height: 52px;
+
+        @media (max-width: 640px) {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 16px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &__card-title {
+        font-family: $font-heading;
+        font-weight: 600;
+        color: $color-black;
+        line-height: 1.3;
+        margin: 0 0 10px;
+
+        font-size: 19px;
+
+        @media (max-width: 640px) {
+            font-size: 16.5px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__card-description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.62);
+        line-height: 1.6;
+        margin: 0;
+
+        font-size: 15px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+
+    // ---- "...and much more" note ----
+    &__more-note {
+        max-width: 640px;
+        margin: 40px auto 0;
+        text-align: center;
+        font-family: $font-accent;
+        font-style: italic;
+        font-weight: 400;
+        color: rgba($color-black, 0.55);
+        line-height: 1.65;
+
+        font-size: 15.5px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            margin-top: 28px;
+        }
+    }
+
+    // ==========================================================================
+    // Why Choose Us — fixed 2-column grid
+    // ==========================================================================
+
+    &__why {
+        margin-bottom: 90px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 64px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 44px;
+        }
+    }
+
+    &__why-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 34px 40px;
+
+        @media (max-width: 1024px) {
+            gap: 26px 30px;
+        }
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    &__why-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+
+        @media (max-width: 640px) {
+            gap: 14px;
+        }
+    }
+
+    &__why-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba($color-orange, 0.12);
+        color: $color-orange;
+
+        width: 46px;
+        height: 46px;
+
+        @media (max-width: 640px) {
+            width: 40px;
+            height: 40px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+    &__why-title {
+        font-family: $font-heading;
+        font-weight: 600;
+        color: $color-black;
+        line-height: 1.3;
+        margin: 0 0 6px;
+
+        font-size: 18px;
+
+        @media (max-width: 640px) {
+            font-size: 15.5px;
+            margin-bottom: 4px;
+        }
+    }
+
+    &__why-description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.62);
+        line-height: 1.6;
+        margin: 0;
+
+        font-size: 15px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+
+    // ==========================================================================
+    // Closing CTA — centered
+    // ==========================================================================
+
+    &__cta {
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__cta-text {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.65);
+        line-height: 1.7;
+        margin: 0 0 28px;
+
+        font-size: 17px;
+
+        @media (max-width: 640px) {
+            font-size: 14.5px;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $font-body;
+        font-weight: 600;
+        text-decoration: none;
+        color: $color-white;
+        background: $color-orange;
+        border-radius: 999px;
+
+        padding: 16px 38px;
+        font-size: 15px;
+
+        @media (max-width: 640px) {
+            padding: 13px 28px;
+            font-size: 14px;
+        }
+    }
+}

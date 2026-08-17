@@ -1,0 +1,271 @@
+// ==========================================================================
+// WhyGlobsterTimeline.scss — Option 1: Timeline / Process Strip
+// Padding lives on the INNER wrapper only — the outer <section> stays
+// full-bleed (no horizontal padding) so it can never cause horizontal
+// scroll on the page.
+// No clamp() — every breakpoint sets its own explicit values.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-orange: #ff5e0e;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.why-timeline {
+  position: relative;
+  width: 100%;
+  background: $color-white;
+  // NOTE: no horizontal padding here on purpose — see header comment.
+
+  &__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+
+    --why-gutter: 90px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: var(--why-gutter);
+    padding-right: var(--why-gutter);
+
+    @media (max-width: 1280px) {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      --why-gutter: 60px;
+    }
+
+    @media (max-width: 1024px) {
+      padding-top: 90px;
+      padding-bottom: 90px;
+      --why-gutter: 44px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      --why-gutter: 32px;
+    }
+
+    @media (max-width: 640px) {
+      padding-top: 56px;
+      padding-bottom: 56px;
+      --why-gutter: 20px;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 90px;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 640px) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-accent;
+    font-weight: 500;
+    color: $color-orange;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    font-size: 14px;
+    margin-bottom: 16px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 auto;
+
+    font-size: 40px;
+    max-width: 620px;
+
+    @media (max-width: 1024px) {
+      font-size: 32px;
+      max-width: 520px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 25px;
+      max-width: 100%;
+    }
+  }
+
+  &__track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 50px;
+
+    @media (max-width: 1024px) {
+      gap: 36px;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+
+  // Connecting line — horizontal on desktop/tablet, vertical on mobile
+  &__line {
+    position: absolute;
+    background: rgba($color-navy, 0.15);
+
+    top: 30px;
+    left: 16.66%;
+    right: 16.66%;
+    height: 2px;
+
+    @media (max-width: 768px) {
+      top: 0;
+      bottom: 0;
+      left: 30px;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+      gap: 24px;
+      padding: 0 0 44px 0;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__node {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $color-white;
+    border: 2px solid $color-navy;
+    color: $color-navy;
+    cursor: default;
+
+    width: 64px;
+    height: 64px;
+    margin-bottom: 26px;
+
+    @media (max-width: 1024px) {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  &__number {
+    position: absolute;
+    bottom: -10px;
+    right: -6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $color-orange;
+    color: $color-white;
+    font-family: $font-accent;
+    font-weight: 500;
+
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+
+    @media (max-width: 640px) {
+      width: 22px;
+      height: 22px;
+      font-size: 10px;
+      bottom: -8px;
+      right: -4px;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $color-black;
+    line-height: 1.3;
+
+    font-size: 21px;
+    margin: 0 0 12px;
+
+    @media (max-width: 1024px) {
+      font-size: 19px;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-weight: 400;
+    color: rgba($color-black, 0.62);
+    line-height: 1.65;
+    max-width: 300px;
+
+    font-size: 15px;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+}
