@@ -2,82 +2,64 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
+  ClipboardList,
   Headset,
-  Globe2,
+  Search,
   ShoppingCart,
-  PenTool,
-  Shirt,
-  Film,
-  Box,
-  Database,
+  TrendingUp,
+  Palette,
   Plus,
 } from "lucide-react";
 import "./WhatWeDoList.scss";
 
 const SERVICES = [
   {
-    icon: Headset,
-    title: "Virtual Support, Real Results",
-    oneLiner: "Your Time Back, Every Day",
+    icon: ClipboardList,
+    title: "Administrative Support",
+    oneLiner: "Stay Organized, Stay Ahead",
     description:
-      "Reliable support for admin, inbox, and daily tasks - so you can focus on growth and scale your business effortlessly with expert assistance.",
-    link: "/service/virtual-assistant",
+      "Keep your day organized with calendar management, data entry, documentation, scheduling, email management and other administrative tasks.",
+    link: "/service/administrative-support",
   },
   {
-    icon: Globe2,
-    title: "Websites Crafted Around You",
-    oneLiner: "Websites Built Around You",
+    icon: Headset,
+    title: "Customer Support",
+    oneLiner: "Timely, Professional Replies",
     description:
-      "Custom-coded websites designed to match your brand identity and convert visitors into loyal, long-term customers effectively.",
-    link: "/service/website-development",
+      "Give your customers timely, professional support through email, chat, social media and other communication channels.",
+    link: "/service/customer-support",
+  },
+  {
+    icon: Search,
+    title: "Data & Research",
+    oneLiner: "From Raw Data to Real Insight",
+    description:
+      "Turn hours of manual research into organized, actionable information with web research, data collection, data processing and reporting.",
+    link: "/service/data-research",
   },
   {
     icon: ShoppingCart,
-    title: "E-Commerce Stores Built To Convert",
-    oneLiner: "Stores Built to Sell",
+    title: "E-commerce Support",
+    oneLiner: "Your Store, Running Smoothly",
     description:
-      "High-performing online stores designed for a seamless shopping experience and higher conversion rates that drive revenue growth.",
-    link: "/service/ecommerce-development",
+      "Manage product listings, order processing, inventory updates, customer queries and other daily e-commerce operations.",
+    link: "/service/ecommerce-support",
   },
   {
-    icon: PenTool,
-    title: "Vector Artwork, Perfected",
-    oneLiner: "Clean, Scalable, Print-Ready",
+    icon: TrendingUp,
+    title: "Sales & Lead Support",
+    oneLiner: "Keep Your Pipeline Moving",
     description:
-      "We turn your designs into crisp vector artwork - perfect for print, branding, merchandise, and digital use across all platforms.",
-    link: "/service/vector-art",
+      "Keep your sales pipeline moving with lead research, CRM updates, prospect list building, follow-ups and appointment coordination.",
+    link: "/service/sales-lead-support",
   },
   {
-    icon: Shirt,
-    title: "Embroidery Digitizing, Stitched Right",
-    oneLiner: "From Design to Stitch",
+    icon: Palette,
+    title: "Creative & Digital Support",
+    oneLiner: "Creative Work, Handled",
     description:
-      "Precise, machine-ready embroidery files that bring your designs to life on fabric with exceptional detail and flawless execution.",
-    link: "/service/embroidery",
-  },
-  {
-    icon: Film,
-    title: "Visuals That Demand Attention",
-    oneLiner: "Polished Visuals, Every Time",
-    description:
-      "Professional editing that makes your photos and videos look sharp, compelling, and market-ready for any platform or campaign.",
-    link: "/service/image-editing",
-  },
-  {
-    icon: Box,
-    title: "Mockups That Sell The Vision",
-    oneLiner: "See Your Product Before It's Made",
-    description:
-      "Realistic mockups that showcase your products beautifully - before a single unit ships to customers or hits the market.",
-    link: "/service/product-mockup",
-  },
-  {
-    icon: Database,
-    title: "Data Processing, Done Right",
-    oneLiner: "Your Data, Organized & Ready",
-    description:
-      "Accurate data entry, cleaning, and processing - so you always work with reliable and actionable information for better decision-making.",
-    link: "/service/data-processing",
+      "Get assistance with digital image editing, graphic production, content preparation, product mockups and other recurring creative tasks.",
+    link: "/service/creative-digital-support",
   },
 ];
 
@@ -104,6 +86,7 @@ const WhatWeDoList = () => {
         >
           What We Do
         </motion.span>
+
         <motion.h2
           className="wwd-list2__heading"
           initial={{ opacity: 0, y: 28 }}
@@ -111,8 +94,20 @@ const WhatWeDoList = () => {
           viewport={viewportSettings}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         >
-          Services Built To Move Your Business Forward
+          Support That Fits the Way You Work
         </motion.h2>
+
+        <motion.p
+          className="wwd-list2__description"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportSettings}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        >
+          From everyday administration to specialized operational support, our
+          virtual assistants help you get more done without adding unnecessary
+          overhead.
+        </motion.p>
       </div>
 
       <motion.div
@@ -160,7 +155,7 @@ const WhatWeDoList = () => {
                       {service.description}
                     </p>
                     <Link to={service.link} className="wwd-list2__mobile-cta">
-                      Learn More
+                      Explore This Service
                     </Link>
                   </div>
                 </div>
@@ -191,7 +186,7 @@ const WhatWeDoList = () => {
                 {active.description}
               </p>
               <Link to={active.link} className="wwd-list2__preview-cta">
-                Learn More
+                Explore This Service
               </Link>
             </motion.div>
           </AnimatePresence>

@@ -5,12 +5,12 @@ import WhatWeDoList from './WhatWeDo/Whatwedolist'
 import WhyGlobsterStats from './Whyglobster/WhyGlobsterStats'
 import MakeAnOrderDiagonal from './MakeAnOrder/MakeAnOrderDiagonal'
 import "./Home2.scss" ;
-import Footer2 from './Footer2/Footer2'
+import NewHeroSection from './HeroSection/NewHeroSection'
 
 const Home2 = () => {
   return (
     <>
-      <Hero />
+      <NewHeroSection/>
       <WhoWeAre />
 
       <WhatWeDoList/>
@@ -18,7 +18,6 @@ const Home2 = () => {
       <WhyGlobsterStats />
 
       <MakeAnOrderDiagonal />
-      {/* <Footer2/> */}
     </>
   )
 }

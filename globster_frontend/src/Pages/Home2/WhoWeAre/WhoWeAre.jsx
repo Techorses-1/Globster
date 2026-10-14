@@ -1,36 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  PenTool,
-  Shirt,
-  Film,
-  Box,
-  Database,
-  Headset,
-  Globe2,
-  CheckCircle2,
-} from "lucide-react";
+import { ClipboardList, Users, Clock } from "lucide-react";
 import "./WhoWeAre.scss";
 
 // NOTE: Replace the image URLs below with your final production photography.
 // Placeholders are served from picsum.photos (seeded, so they stay
 // consistent) purely so the layout is visible while you wire up real assets.
 
-const SERVICES = [
-  { label: "Vector Artwork", icon: PenTool },
-  { label: "Embroidery Digitizing", icon: Shirt },
-  { label: "Image & Video Editing", icon: Film },
-  { label: "Website Development", icon: Globe2 },
-  { label: "Data Processing", icon: Database },
-  { label: "Virtual Assistance", icon: Headset },
-//   { label: "Website Development", icon: Globe2 },
-//   { label: "Product Mockups", icon: Box }, 
-];
-
-const FEATURES = [
-  "Clear communication",
-  "Fair pricing",
-  "No long-term contracts",
+const CARDS = [
+  {
+    title: "Delegate the Busywork",
+    text: "Hand off repetitive, time-consuming tasks and get your hours back.",
+    icon: ClipboardList,
+  },
+  {
+    title: "A Consistent Extension of Your Team",
+    text: "Dependable virtual professionals who become part of your daily operations.",
+    icon: Users,
+  },
+  {
+    title: "Flexible, Built Around You",
+    text: "From a few hours a week to full-time support, shaped to fit your business.",
+    icon: Clock,
+  },
 ];
 
 const fadeUp = {
@@ -61,7 +53,7 @@ const WhoWeAre = () => {
           <div className="who2__image-main">
             <img
               src="https://picsum.photos/seed/globster-team/900/1100"
-              alt="Globster team collaborating on client projects"
+              alt="Globster virtual professionals working with a client team"
               loading="lazy"
             />
           </div>
@@ -75,7 +67,7 @@ const WhoWeAre = () => {
           >
             <img
               src="https://picsum.photos/seed/globster-detail/300/300"
-              alt="Detail of design work delivered by Globster"
+              alt="Globster virtual assistant at work"
               loading="lazy"
             />
           </motion.div>
@@ -101,73 +93,56 @@ const WhoWeAre = () => {
             whileInView="visible"
             viewport={viewportSettings}
           >
-            Quality Work, Without The In-House Overhead
+            More Than a Virtual Assistant. A Reliable Extension of Your Team.
           </motion.h2>
 
           <motion.p
-            className="who2__paragraph"
+            className="who2__paragraph who2__paragraph--lead"
             variants={fadeUp}
-            custom={0.2}
+            custom={0.18}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
           >
-            Globster is a global outsourcing partner built for businesses that
-            want quality work without the overhead of hiring in-house.
+            Running a growing business means there&apos;s always more to do
+            than your team has time for.
           </motion.p>
 
           <motion.p
             className="who2__paragraph"
             variants={fadeUp}
-            custom={0.28}
+            custom={0.26}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
           >
-            We believe good work speaks for itself - so instead of promising
-            you decades of experience, we promise you our full attention,
-            fast turnarounds, and results you can see from the very first
-            project. Every task we take on, big or small, gets the same
-            level of care.
+            Globster helps businesses delegate the repetitive, time-consuming
+            and operational work that slows them down. We connect you with
+            dependable virtual professionals who can become a consistent part
+            of your daily operations.
           </motion.p>
-
-          {/* Feature strip */}
-          <motion.ul
-            className="who2__features"
-            variants={fadeUp}
-            custom={0.36}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-          >
-            {FEATURES.map((feature) => (
-              <li className="who2__feature" key={feature}>
-                <CheckCircle2 size={18} strokeWidth={2.2} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </motion.ul>
 
           <motion.p
-            className="who2__paragraph who2__paragraph--services-intro"
+            className="who2__paragraph"
             variants={fadeUp}
-            custom={0.42}
+            custom={0.34}
             initial="hidden"
             whileInView="visible"
             viewport={viewportSettings}
           >
-            Whether you&apos;re a small business or a growing brand, we
-            adapt our support to fit exactly what you need - across:
+            Whether you need support for a few hours a week or dedicated
+            full-time assistance, we build a solution around the way your
+            business actually works.
           </motion.p>
 
-          {/* Services icon grid */}
+          {/* Cards */}
           <div className="who2__services">
-            {SERVICES.map(({ label, icon: Icon }, i) => (
+            {CARDS.map(({ title, text, icon: Icon }, i) => (
               <motion.div
                 className="who2__service"
-                key={label}
+                key={title}
                 variants={fadeUp}
-                custom={0.46 + i * 0.06}
+                custom={0.42 + i * 0.08}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportSettings}
@@ -176,7 +151,8 @@ const WhoWeAre = () => {
                 <span className="who2__service-icon">
                   <Icon size={20} strokeWidth={1.8} />
                 </span>
-                <span className="who2__service-label">{label}</span>
+                <h3 className="who2__service-title">{title}</h3>
+                <p className="who2__service-text">{text}</p>
               </motion.div>
             ))}
           </div>

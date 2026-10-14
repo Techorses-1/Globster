@@ -1,0 +1,267 @@
+// ==========================================================================
+// NewHeroSection.scss
+// Same visual language as IndustriesHero, static (no slider).
+// Padding lives on the INNER content div only — outer <section> and the
+// image wrap stay full-bleed, so nothing can cause horizontal scroll.
+// No clamp() — every breakpoint sets its own explicit values.
+// All classes are prefixed with .new-hero-section — no conflicts.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #003185;
+$color-accent: #283618;
+
+// Flip these two if the image is dark on the text side
+$color-title: $color-black;
+$color-text: rgba($color-black, 0.86);
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.new-hero-section {
+    position: relative;
+    width: 100%;
+    height: 89vh;
+    overflow: hidden;
+    background: $color-black;
+    margin-top: 77px;
+
+    // ---- Height per breakpoint ----
+    @media (max-width: 1024px) {
+        height: 80vh;
+        margin-top: 77px;
+    }
+
+    @media (max-width: 640px) {
+        height: auto;
+        min-height: 70vh;
+        margin-top: 65px;
+    }
+
+    &__image-wrap {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        // background: linear-gradient(
+        //     100deg,
+        //     rgba($color-black, 0.78) 0%,
+        //     rgba($color-black, 0.58) 32%,
+        //     rgba($color-navy, 0.42) 55%,
+        //     rgba($color-black, 0.22) 78%,
+        //     rgba($color-black, 0.12) 100%
+        // );
+    }
+
+    &__content-wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        min-height: inherit;
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        max-width: 760px;
+        color: $color-white;
+
+        --new-hero-section-gutter: 90px;
+        padding-left: var(--new-hero-section-gutter);
+        padding-right: var(--new-hero-section-gutter);
+
+        @media (max-width: 1280px) {
+            --new-hero-section-gutter: 60px;
+            max-width: 680px;
+        }
+
+        @media (max-width: 1024px) {
+            --new-hero-section-gutter: 44px;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            --new-hero-section-gutter: 32px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            --new-hero-section-gutter: 20px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-title;
+        line-height: 1.14;
+        letter-spacing: -0.01em;
+        margin: 0 0 18px;
+
+        font-size: 52px;
+
+        @media (max-width: 1280px) {
+            font-size: 44px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 38px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 26px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 22px;
+        }
+    }
+
+    &__one-liner {
+        font-family: $font-accent;
+        font-weight: 400;
+        font-style: italic;
+        color: $color-accent;
+        line-height: 1.5;
+        margin: 0 0 16px;
+
+        font-size: 18px;
+
+        @media (max-width: 1024px) {
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 13px;
+        }
+    }
+
+    &__description {
+        font-family: $font-body;
+        font-weight: 400;
+        color: $color-text;
+        line-height: 1.6;
+        max-width: 540px;
+
+        font-size: 17px;
+        margin: 0;
+
+        @media (max-width: 1024px) {
+            font-size: 15.5px;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 12.5px;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+
+        @media (max-width: 1024px) {
+            margin-top: 26px;
+        }
+
+        @media (max-width: 640px) {
+            margin-top: 20px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: $color-accent;
+        color: $color-white;
+        font-family: $font-body;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 2px solid $color-accent;
+        cursor: pointer;
+        transition: background 0.25s ease, border-color 0.25s ease,
+            transform 0.25s ease;
+
+        font-size: 16px;
+        padding: 15px 30px;
+
+        &:hover {
+            background: $color-accent;
+            border-color: $color-accent;
+            transform: translateY(-2px);
+
+            .new-hero-section__button-arrow {
+                transform: translateX(4px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 15px;
+            padding: 13px 26px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            padding: 12px 22px;
+            gap: 8px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 13px;
+            padding: 11px 20px;
+        }
+    }
+
+    &__button-text {
+        display: inline-block;
+    }
+
+    &__button-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease;
+    }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
-import Home from "./Pages/Home/Home";
 import useSmoothScroll from "./Components/SmoothScroll/useSmoothScroll";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
@@ -48,6 +47,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home2 />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/process" element={<Process />} />
           <Route path="/pricing" element={<Pricing />} />
@@ -56,7 +56,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/globalcontact" element={<ComingSoon />} />
-          
+
           <Route path="/service/vector-art" element={<VerctorArt />} />
           <Route path="/service/embroidery" element={<Embroidery />} />
           <Route path="/service/image-editing" element={<ImageEditing />} />

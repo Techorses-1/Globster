@@ -30,8 +30,6 @@ const IndustriesHero = () => {
 
             <div className="industries-hero__content-wrap">
                 <div className="industries-hero__content">
-                    
-
                     <motion.span
                         className="industries-hero__eyebrow"
                         variants={contentVariants}
@@ -49,7 +47,7 @@ const IndustriesHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        Built To Support Every Kind Of Business
+                        Business Support That Understands Your Industry
                     </motion.h1>
 
                     <motion.p
@@ -59,7 +57,7 @@ const IndustriesHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        Industries We Work With
+                        Different businesses have different operational demands.
                     </motion.p>
 
                     <motion.p
@@ -69,10 +67,33 @@ const IndustriesHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        From e-commerce to real estate, we adapt our support to fit
-                        the way your industry actually works - not the other way
-                        around.
+                        We start by understanding how your business works, then
+                        delegate recurring tasks around your workflows and
+                        priorities.
                     </motion.p>
+
+                    <motion.div
+                        className="industries-hero__actions"
+                        variants={contentVariants}
+                        custom={0.4}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <a
+                            href="/contact"
+                            className="industries-hero__button"
+                        >
+                            <span className="industries-hero__button-text">
+                                Find Support for Your Industry
+                            </span>
+                            <span
+                                className="industries-hero__button-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </a>
+                    </motion.div>
                 </div>
             </div>
         </section>

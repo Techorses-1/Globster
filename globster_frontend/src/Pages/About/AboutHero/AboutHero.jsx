@@ -30,8 +30,6 @@ const AboutHero = () => {
 
             <div className="about-hero__content-wrap">
                 <div className="about-hero__content">
-                    
-
                     <motion.span
                         className="about-hero__eyebrow"
                         variants={contentVariants}
@@ -49,7 +47,7 @@ const AboutHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        The Team Behind Your Growth
+                        Helping Businesses Move Forward, One Task at a Time
                     </motion.h1>
 
                     <motion.p
@@ -59,7 +57,7 @@ const AboutHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        Who We Are & Why We Do This
+                        Dependable support, without managing every task yourself.
                     </motion.p>
 
                     <motion.p
@@ -69,10 +67,30 @@ const AboutHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        Get to know the people, the values, and the story behind
-                        Globster - and why businesses trust us to be part of their
-                        team.
+                        We help entrepreneurs, startups and growing companies
+                        make delegation easier and day-to-day operations more
+                        manageable.
                     </motion.p>
+
+                    <motion.div
+                        className="about-hero__actions"
+                        variants={contentVariants}
+                        custom={0.4}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <a href="/contact" className="about-hero__button">
+                            <span className="about-hero__button-text">
+                                Talk to Our Team
+                            </span>
+                            <span
+                                className="about-hero__button-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </a>
+                    </motion.div>
                 </div>
             </div>
         </section>
