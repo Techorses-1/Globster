@@ -6,7 +6,7 @@ export const PROCESS_STEPS = [
         number: "01",
         title: "Discovery Call",
         description:
-            "Discuss your requirements and the kind of VA you want. We go through your project in detail and find out exactly how we can help you.",
+            "Let's talk through your requirements, goals and the kind of VA you need. We'll discuss your business in detail and work out exactly how we can support you.",
     },
     {
         icon: UserCheck,

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import hero from "../../../assets/images/newhero.jpeg";
+import hero from "../../../assets/images/home/newhero.png";
 import "./NewHeroSection.scss";
 
 const contentVariants = {

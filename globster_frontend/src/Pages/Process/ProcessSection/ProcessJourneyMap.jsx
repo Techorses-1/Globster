@@ -18,7 +18,7 @@ const ProcessJourneyMap = () => {
   // traveler marker's position, AND (below) the icon active states.
   const { scrollYProgress } = useScroll({
     target: trackRef,
-    offset: ["start end", "end start"],
+    offset: ["start end", "end 30%"],
   });
 
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
@@ -63,7 +63,7 @@ const ProcessJourneyMap = () => {
 
     const unsubscribe = scrollYProgress.on("change", (latest) => {
       setActiveStates((prev) => {
-        const next = thresholds.map((t) => latest >= t - 0.02); 
+        const next = thresholds.map((t) => latest >= t - 0.02);
         if (prev.length === next.length && prev.every((v, i) => v === next[i])) {
           return prev;
         }

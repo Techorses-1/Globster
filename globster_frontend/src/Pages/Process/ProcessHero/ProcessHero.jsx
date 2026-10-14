@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import "./ProcessHero.scss";
+import hero from "../../../assets/images/process/hero.png";
 
 // NOTE: Replace this with your final production photography.
 // Placeholder is served from picsum.photos (seeded, so it stays
 // consistent) purely so the layout is visible while you wire up a real asset.
-const HERO_IMAGE = "https://picsum.photos/seed/globster-process/1920/1080";
 
 const contentVariants = {
     hidden: { opacity: 0, y: 32 },
@@ -23,15 +23,13 @@ const ProcessHero = () => {
             <div className="process-hero__image-wrap">
                 <div
                     className="process-hero__image"
-                    style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+                    style={{ backgroundImage: `url(${hero})` }}
                 />
                 <div className="process-hero__overlay" />
             </div>
 
             <div className="process-hero__content-wrap">
                 <div className="process-hero__content">
-                   
-
                     <motion.span
                         className="process-hero__eyebrow"
                         variants={contentVariants}
@@ -49,7 +47,7 @@ const ProcessHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        How We Bring Your Ideas To Life
+                        Getting Started With Globster Is Straightforward
                     </motion.h1>
 
                     <motion.p
@@ -59,7 +57,8 @@ const ProcessHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        Simple, Transparent, Reliable
+                        Finding virtual support shouldn&apos;t create more work
+                        for your business.
                     </motion.p>
 
                     <motion.p
@@ -69,9 +68,30 @@ const ProcessHero = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        From the first conversation to final delivery, here&apos;s
-                        exactly how we work together - no surprises, no guesswork.
+                        We understand your requirements, find the right support
+                        arrangement and set up a clear workflow before tasks
+                        begin.
                     </motion.p>
+
+                    <motion.div
+                        className="process-hero__actions"
+                        variants={contentVariants}
+                        custom={0.4}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <a href="/contact" className="process-hero__button">
+                            <span className="process-hero__button-text">
+                                Start a Conversation
+                            </span>
+                            <span
+                                className="process-hero__button-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </a>
+                    </motion.div>
                 </div>
             </div>
         </section>

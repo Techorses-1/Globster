@@ -1,0 +1,481 @@
+// ==========================================================================
+// MissionVision.scss
+// Fonts: Poppins (heading), Inter (body/UI), Roboto Slab (eyebrow/accent)
+// Green is used ONLY for icon backgrounds and the eyebrow text.
+// No clamp() — every breakpoint sets its own explicit values.
+// All classes are prefixed with .mission-vision — no conflicts.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-surface: #f7f8fb;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.mission-vision {
+    position: relative;
+    width: 100%;
+    background: $color-surface;
+    overflow: hidden;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --mv-gutter: 90px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: var(--mv-gutter);
+        padding-right: var(--mv-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            --mv-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --mv-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            --mv-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 56px;
+            padding-bottom: 56px;
+            --mv-gutter: 20px;
+        }
+    }
+
+    // ==========================================================================
+    // Header
+    // ==========================================================================
+
+    &__header {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+
+        margin-bottom: 70px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 52px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 36px;
+        }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.22;
+        letter-spacing: -0.01em;
+        margin: 0;
+
+        font-size: 40px;
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 24px;
+            line-height: 1.28;
+        }
+    }
+
+    // ==========================================================================
+    // Grid + cards (both cards always the same height)
+    // ==========================================================================
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+        gap: 32px;
+
+        @media (max-width: 1024px) {
+            gap: 24px;
+        }
+
+        @media (max-width: 860px) {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 22px;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.07);
+        border-radius: 28px;
+        box-shadow: 0 20px 44px rgba($color-black, 0.06);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba($color-black, 0.12);
+
+            .mission-vision__media-img img {
+                transform: scale(1.06);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            border-radius: 24px;
+        }
+
+        @media (max-width: 640px) {
+            border-radius: 20px;
+        }
+    }
+
+    // ---- Image header ----
+    // __media has NO overflow rule, so the icon can overlap below the photo.
+    // __media-img crops the image (rounded top corners + hover zoom).
+    &__media {
+        position: relative;
+        width: 100%;
+        height: 250px;
+
+        @media (max-width: 1024px) {
+            height: 220px;
+        }
+
+        @media (max-width: 640px) {
+            height: 180px;
+        }
+    }
+
+    &__media-img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 27px 27px 0 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg,
+                    rgba($color-black, 0) 55%,
+                    rgba($color-black, 0.18) 100%);
+        }
+
+        @media (max-width: 1024px) {
+            border-radius: 23px 23px 0 0;
+        }
+
+        @media (max-width: 640px) {
+            border-radius: 19px 19px 0 0;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        z-index: 2;
+        left: 48px;
+        bottom: 0;
+        transform: translateY(50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-orange;
+        color: $color-white;
+        border: 5px solid $color-white;
+        border-radius: 20px;
+        box-shadow: 0 12px 26px rgba($color-black, 0.18);
+
+        width: 72px;
+        height: 72px;
+
+        @media (max-width: 1280px) {
+            left: 38px;
+        }
+
+        @media (max-width: 1024px) {
+            left: 30px;
+        }
+
+        @media (max-width: 640px) {
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-width: 4px;
+            border-radius: 16px;
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    // ---- Body ----
+    &__body {
+        position: relative;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 58px 48px 48px;
+
+        @media (max-width: 1280px) {
+            padding: 56px 38px 40px;
+        }
+
+        @media (max-width: 1024px) {
+            padding: 52px 30px 34px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 46px 20px 26px;
+        }
+    }
+
+    &__number {
+        position: absolute;
+        top: 18px;
+        right: 40px;
+        font-family: $font-heading;
+        font-weight: 800;
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba($color-black, 0.07);
+        user-select: none;
+        pointer-events: none;
+
+        font-size: 84px;
+
+        @media (max-width: 1024px) {
+            right: 28px;
+            font-size: 70px;
+        }
+
+        @media (max-width: 640px) {
+            top: 14px;
+            right: 18px;
+            font-size: 52px;
+            -webkit-text-stroke-width: 1.5px;
+        }
+    }
+
+    &__tag {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba($color-black, 0.7);
+        background: $color-surface;
+        border: 1px solid rgba($color-black, 0.08);
+        border-radius: 999px;
+
+        font-size: 12.5px;
+        padding: 7px 15px;
+        margin-bottom: 18px;
+
+        @media (max-width: 640px) {
+            font-size: 11px;
+            padding: 6px 12px;
+            margin-bottom: 14px;
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+
+        font-size: 29px;
+        margin: 0 0 18px;
+
+        @media (max-width: 1280px) {
+            font-size: 26px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 24px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+    }
+
+    &__text {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.66);
+        line-height: 1.75;
+
+        font-size: 16px;
+        margin: 0 0 16px;
+
+        &--lead {
+            font-weight: 500;
+            color: rgba($color-black, 0.84);
+            font-size: 17px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 15.5px;
+
+            &--lead {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+
+            &--lead {
+                font-size: 14.5px;
+            }
+        }
+    }
+
+    // ---- Bottom group (caption + chips), pinned to card bottom ----
+    &__group {
+        width: 100%;
+        margin-top: auto;
+        padding-top: 14px;
+
+        @media (max-width: 640px) {
+            padding-top: 8px;
+        }
+    }
+
+    &__caption {
+        display: block;
+        font-family: $font-accent;
+        font-style: italic;
+        color: rgba($color-black, 0.55);
+
+        font-size: 14.5px;
+        margin-bottom: 12px;
+
+        @media (max-width: 640px) {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__chips {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+
+        @media (max-width: 480px) {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+
+    &__chip {
+        display: flex;
+        align-items: center;
+        background: $color-surface;
+        border: 1px solid rgba($color-black, 0.06);
+        border-radius: 14px;
+        transition: border-color 0.25s ease, transform 0.25s ease;
+
+        padding: 5px 14px;
+        gap: 12px;
+        min-height: 66px;
+
+        &:hover {
+            border-color: rgba($color-black, 0.2);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 640px) {
+            padding: 10px 12px;
+            gap: 10px;
+            border-radius: 12px;
+            min-height: 58px;
+        }
+    }
+
+    &__chip-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 10px;
+        width: 38px;
+        height: 38px;
+
+        @media (max-width: 640px) {
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    &__chip-text {
+        font-family: $font-body;
+        font-weight: 500;
+        color: $color-navy;
+        line-height: 1.35;
+
+        font-size: 14.5px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+}

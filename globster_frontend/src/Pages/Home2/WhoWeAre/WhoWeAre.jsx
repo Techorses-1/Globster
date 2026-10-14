@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { ClipboardList, Users, Clock } from "lucide-react";
 import "./WhoWeAre.scss";
 
+import about1 from "../../../assets/images/home/about1.png"
+import about2 from "../../../assets/images/home/about2.png"
+
 // NOTE: Replace the image URLs below with your final production photography.
 // Placeholders are served from picsum.photos (seeded, so they stay
 // consistent) purely so the layout is visible while you wire up real assets.
@@ -52,7 +55,7 @@ const WhoWeAre = () => {
 
           <div className="who2__image-main">
             <img
-              src="https://picsum.photos/seed/globster-team/900/1100"
+              src={about1}
               alt="Globster virtual professionals working with a client team"
               loading="lazy"
             />
@@ -66,7 +69,7 @@ const WhoWeAre = () => {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
             <img
-              src="https://picsum.photos/seed/globster-detail/300/300"
+              src={about2}
               alt="Globster virtual assistant at work"
               loading="lazy"
             />

@@ -1,0 +1,538 @@
+// ==========================================================================
+// OurFounder.scss
+// Fonts: Poppins (heading), Inter (body/UI), Roboto Slab (eyebrow/accent)
+// Section background is white; the content sits inside a $color-surface panel.
+// Green is used ONLY for icon backgrounds, the button and the eyebrow text.
+// No clamp() — every breakpoint sets its own explicit values.
+// All classes are prefixed with .founder — no conflicts.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-surface: #f7f8fb;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.founder {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+    overflow: hidden;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --fd-gutter: 90px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        padding-left: var(--fd-gutter);
+        padding-right: var(--fd-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            --fd-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --fd-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            --fd-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 56px;
+            padding-bottom: 56px;
+            --fd-gutter: 20px;
+        }
+    }
+
+    // ==========================================================================
+    // Panel (2 columns)
+    // ==========================================================================
+
+    &__panel {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        align-items: center;
+        background: $color-surface;
+        border: 1px solid rgba($color-black, 0.06);
+        border-radius: 32px;
+
+        padding: 64px;
+        gap: 64px;
+
+        @media (max-width: 1280px) {
+            padding: 52px;
+            gap: 48px;
+        }
+
+        @media (max-width: 1024px) {
+            padding: 40px;
+            gap: 36px;
+            border-radius: 28px;
+        }
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            padding: 36px 32px;
+            gap: 56px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 24px 18px 28px;
+            gap: 48px;
+            border-radius: 22px;
+        }
+    }
+
+    // ==========================================================================
+    // Media (arch photo + offset frame + name card)
+    // ==========================================================================
+
+    &__media {
+        position: relative;
+        width: 100%;
+
+        @media (max-width: 900px) {
+            max-width: 440px;
+            margin: 0 auto;
+        }
+    }
+
+    &__photo-wrap {
+        position: relative;
+        width: 100%;
+        height: 580px;
+
+        // offset outline frame
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba($color-black, 0.14);
+            border-radius: 999px 999px 28px 28px;
+            transform: translate(20px, 20px);
+            pointer-events: none;
+        }
+
+        @media (max-width: 1280px) {
+            height: 540px;
+        }
+
+        @media (max-width: 1024px) {
+            height: 480px;
+
+            &::before {
+                transform: translate(16px, 16px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            height: 500px;
+        }
+
+        @media (max-width: 640px) {
+            height: 400px;
+
+            &::before {
+                transform: translate(12px, 12px);
+                border-radius: 999px 999px 22px 22px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            height: 350px;
+        }
+    }
+
+    &__photo {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: $color-black;
+        border-radius: 999px 999px 28px 28px;
+        box-shadow: 0 24px 50px rgba($color-black, 0.14);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg,
+                    rgba($color-black, 0) 60%,
+                    rgba($color-black, 0.25) 100%);
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 640px) {
+            border-radius: 999px 999px 22px 22px;
+        }
+    }
+
+    // ---- Floating name card ----
+    &__name-card {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.06);
+        border-radius: 18px;
+        box-shadow: 0 18px 38px rgba($color-black, 0.16);
+
+        left: -28px;
+        bottom: 36px;
+        padding: 14px 22px 14px 14px;
+        gap: 14px;
+
+        @media (max-width: 1280px) {
+            left: -20px;
+        }
+
+        @media (max-width: 1024px) {
+            left: -14px;
+            bottom: 28px;
+            padding: 12px 18px 12px 12px;
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            left: 14px;
+            bottom: 26px;
+        }
+
+        @media (max-width: 640px) {
+            left: 10px;
+            bottom: 20px;
+            padding: 10px 16px 10px 10px;
+            gap: 10px;
+            border-radius: 14px;
+        }
+    }
+
+    &__name-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 14px;
+
+        width: 50px;
+        height: 50px;
+
+        @media (max-width: 640px) {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            svg {
+                width: 19px;
+                height: 19px;
+            }
+        }
+    }
+
+    &__name-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.3;
+
+        font-size: 18px;
+
+        @media (max-width: 640px) {
+            font-size: 15.5px;
+        }
+    }
+
+    &__role {
+        font-family: $font-accent;
+        font-style: italic;
+        color: rgba($color-black, 0.6);
+        line-height: 1.4;
+
+        font-size: 13.5px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+        }
+    }
+
+    // ==========================================================================
+    // Content
+    // ==========================================================================
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 0;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.22;
+        letter-spacing: -0.01em;
+        margin: 0;
+
+        font-size: 40px;
+
+        @media (max-width: 1280px) {
+            font-size: 36px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 24px;
+            line-height: 1.28;
+        }
+    }
+
+    &__lead {
+        font-family: $font-body;
+        font-weight: 500;
+        color: rgba($color-black, 0.84);
+        line-height: 1.7;
+
+        font-size: 18px;
+        margin: 22px 0 0;
+
+        @media (max-width: 1024px) {
+            font-size: 16.5px;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14.5px;
+            line-height: 1.7;
+            margin-top: 14px;
+        }
+    }
+
+    // ---- Focus / Aim cards ----
+    &__notes {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px;
+        margin-top: 32px;
+
+        @media (max-width: 1024px) {
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        @media (max-width: 720px) {
+            grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 640px) {
+            gap: 12px;
+            margin-top: 22px;
+        }
+    }
+
+    &__note {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.07);
+        border-radius: 20px;
+        box-shadow: 0 14px 30px rgba($color-black, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+            border-color 0.3s ease;
+
+        padding: 26px 24px;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-color: rgba($color-black, 0.16);
+            box-shadow: 0 22px 44px rgba($color-black, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            padding: 22px 20px;
+            border-radius: 18px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 18px 16px;
+            border-radius: 16px;
+        }
+    }
+
+    &__note-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 14px;
+
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+
+            svg {
+                width: 19px;
+                height: 19px;
+            }
+        }
+    }
+
+    &__note-label {
+        font-family: $font-accent;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba($color-black, 0.7);
+
+        font-size: 12.5px;
+        margin-bottom: 10px;
+
+        @media (max-width: 640px) {
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__note-text {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.68);
+        line-height: 1.7;
+        margin: 0;
+
+        font-size: 15px;
+
+        @media (max-width: 1024px) {
+            font-size: 14.5px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            line-height: 1.65;
+        }
+    }
+
+    // ---- CTA ----
+    &__actions {
+        display: flex;
+        align-items: center;
+
+        margin-top: 32px;
+
+        @media (max-width: 1024px) {
+            margin-top: 28px;
+        }
+
+        @media (max-width: 640px) {
+            width: 100%;
+            margin-top: 22px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: $color-orange;
+        color: $color-white;
+        font-family: $font-body;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        font-size: 16px;
+        padding: 15px 30px;
+
+        svg {
+            transition: transform 0.25s ease;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba($color-black, 0.18);
+
+            svg {
+                transform: translateX(4px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 15px;
+            padding: 13px 26px;
+        }
+
+        @media (max-width: 640px) {
+            width: 100%;
+            font-size: 14px;
+            padding: 12px 22px;
+        }
+    }
+}

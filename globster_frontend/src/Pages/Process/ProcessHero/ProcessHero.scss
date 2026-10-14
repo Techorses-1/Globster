@@ -237,4 +237,73 @@ $font-accent: "Roboto Slab", serif;
             font-size: 12.5px;
         }
     }
+
+    // ---- CTA button ----
+    &__actions {
+        display: flex;
+        align-items: center;
+        margin-top: 28px;
+
+        @media (max-width: 1024px) {
+            margin-top: 22px;
+        }
+
+        @media (max-width: 640px) {
+            margin-top: 16px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: $color-orange;
+        color: $color-white;
+        font-family: $font-body;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 2px solid $color-orange;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        font-size: 16px;
+        padding: 15px 30px;
+
+        &:hover {
+            background: $color-orange;
+            border-color: $color-orange;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba($color-black, 0.18);
+
+            .process-hero__button-arrow {
+                transform: translateX(4px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 15px;
+            padding: 13px 26px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            padding: 12px 22px;
+            gap: 8px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 13px;
+            padding: 11px 20px;
+        }
+    }
+
+    &__button-text {
+        display: inline-block;
+    }
+
+    &__button-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease;
+    }
 }

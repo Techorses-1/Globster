@@ -1,0 +1,501 @@
+// ==========================================================================
+// WhatWeBelieveIn.scss
+// Fonts: Poppins (heading), Inter (body/UI), Roboto Slab (eyebrow/accent)
+// White background (follows MissionVision which uses $color-surface).
+// No overflow rule on the section so the left image can stay sticky.
+// No clamp() — every breakpoint sets its own explicit values.
+// All classes are prefixed with .beliefs — no conflicts.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-surface: #f7f8fb;
+$color-tint: #e8ede0;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.beliefs {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --bl-gutter: 90px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        padding-left: var(--bl-gutter);
+        padding-right: var(--bl-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            --bl-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --bl-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            --bl-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 56px;
+            padding-bottom: 56px;
+            --bl-gutter: 20px;
+        }
+    }
+
+    // ==========================================================================
+    // Header
+    // ==========================================================================
+
+    &__header {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+
+        margin-bottom: 64px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 640px) {
+            margin-bottom: 32px;
+        }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.22;
+        letter-spacing: -0.01em;
+        margin: 0;
+
+        font-size: 40px;
+
+        @media (max-width: 1024px) {
+            font-size: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 24px;
+            line-height: 1.28;
+        }
+    }
+
+    // ==========================================================================
+    // Layout
+    // ==========================================================================
+
+    &__layout {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        align-items: start;
+        gap: 56px;
+
+        @media (max-width: 1280px) {
+            gap: 44px;
+        }
+
+        @media (max-width: 1024px) {
+            gap: 36px;
+        }
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 26px;
+        }
+    }
+
+    // ==========================================================================
+    // Media (sticky on desktop)
+    // ==========================================================================
+
+    &__media {
+        position: sticky;
+        top: 110px;
+
+        @media (max-width: 900px) {
+            position: relative;
+            top: auto;
+        }
+    }
+
+    &__media-frame {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 28px;
+        box-shadow: 0 24px 50px rgba($color-black, 0.12);
+
+        height: 560px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg,
+                    rgba($color-black, 0) 50%,
+                    rgba($color-orange, 0.35) 100%);
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 1280px) {
+            height: 520px;
+        }
+
+        @media (max-width: 1024px) {
+            height: 480px;
+            border-radius: 24px;
+        }
+
+        @media (max-width: 900px) {
+            height: 340px;
+        }
+
+        @media (max-width: 640px) {
+            height: 250px;
+            border-radius: 20px;
+        }
+    }
+
+    // ---- Floating badge ----
+    &__badge {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.06);
+        box-shadow: 0 18px 38px rgba($color-black, 0.14);
+        border-radius: 18px;
+
+        left: 24px;
+        bottom: -24px;
+        padding: 14px 20px 14px 14px;
+        gap: 14px;
+
+        @media (max-width: 1024px) {
+            left: 18px;
+            padding: 12px 18px 12px 12px;
+            gap: 12px;
+        }
+
+        @media (max-width: 640px) {
+            left: 14px;
+            bottom: -18px;
+            padding: 10px 14px 10px 10px;
+            gap: 10px;
+            border-radius: 14px;
+        }
+    }
+
+    &__badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 14px;
+
+        width: 52px;
+        height: 52px;
+
+        @media (max-width: 640px) {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &__badge-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__badge-title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.3;
+
+        font-size: 17px;
+
+        @media (max-width: 640px) {
+            font-size: 15px;
+        }
+    }
+
+    &__badge-copy {
+        font-family: $font-accent;
+        font-style: italic;
+        color: rgba($color-black, 0.6);
+        line-height: 1.4;
+
+        font-size: 13.5px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+        }
+    }
+
+    // ==========================================================================
+    // Principles list
+    // ==========================================================================
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+
+        gap: 16px;
+
+        @media (max-width: 900px) {
+            margin-top: 12px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 12px;
+            margin-top: 8px;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.08);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+            box-shadow 0.3s ease, transform 0.3s ease;
+
+        padding: 26px 28px;
+        gap: 22px;
+
+        // left accent bar
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: $color-orange;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.35s ease;
+        }
+
+        &:hover {
+            background: rgba($color-tint, 0.5);
+            border-color: rgba($color-orange, 0.35);
+            box-shadow: 0 16px 34px rgba($color-black, 0.07);
+            transform: translateX(6px);
+
+            &::before {
+                transform: scaleY(1);
+            }
+
+            .beliefs__icon {
+                background: $color-orange;
+                color: $color-white;
+            }
+
+            .beliefs__number {
+                -webkit-text-stroke-color: rgba($color-orange, 0.25);
+            }
+        }
+
+        @media (max-width: 1280px) {
+            padding: 24px 24px;
+            gap: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            padding: 22px 22px;
+            gap: 16px;
+            border-radius: 18px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 18px 16px;
+            gap: 14px;
+            border-radius: 16px;
+
+            &:hover {
+                transform: none;
+            }
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-tint;
+        color: $color-orange;
+        border-radius: 16px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        width: 58px;
+        height: 58px;
+
+        @media (max-width: 1024px) {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 640px) {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &__content {
+        flex: 1;
+        min-width: 0;
+        // keeps text clear of the big number
+        padding-right: 56px;
+
+        @media (max-width: 1024px) {
+            padding-right: 44px;
+        }
+
+        @media (max-width: 640px) {
+            padding-right: 0;
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.3;
+        letter-spacing: -0.005em;
+
+        font-size: 21px;
+        margin: 0 0 8px;
+
+        @media (max-width: 1024px) {
+            font-size: 19px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+    }
+
+    &__text {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.66);
+        line-height: 1.7;
+        margin: 0;
+
+        font-size: 15.5px;
+
+        @media (max-width: 1024px) {
+            font-size: 15px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+            line-height: 1.65;
+        }
+    }
+
+    &__number {
+        position: absolute;
+        top: 14px;
+        right: 24px;
+        font-family: $font-heading;
+        font-weight: 800;
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba($color-black, 0.07);
+        transition: -webkit-text-stroke-color 0.3s ease;
+        user-select: none;
+        pointer-events: none;
+
+        font-size: 56px;
+
+        @media (max-width: 1024px) {
+            right: 18px;
+            font-size: 46px;
+        }
+
+        @media (max-width: 640px) {
+            top: 10px;
+            right: 14px;
+            font-size: 34px;
+            -webkit-text-stroke-width: 1.5px;
+        }
+    }
+}

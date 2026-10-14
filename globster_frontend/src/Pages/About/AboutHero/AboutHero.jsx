@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import "./AboutHero.scss";
+import hero from "../../../assets/images/about/hero.png";
 
 // NOTE: Replace this with your final production photography.
 // Placeholder is served from picsum.photos (seeded, so it stays
 // consistent) purely so the layout is visible while you wire up a real asset.
-const HERO_IMAGE = "https://picsum.photos/seed/globster-about/1920/1080";
 
 const contentVariants = {
     hidden: { opacity: 0, y: 32 },
@@ -23,7 +23,7 @@ const AboutHero = () => {
             <div className="about-hero__image-wrap">
                 <div
                     className="about-hero__image"
-                    style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+                    style={{ backgroundImage: `url(${hero})` }}
                 />
                 <div className="about-hero__overlay" />
             </div>

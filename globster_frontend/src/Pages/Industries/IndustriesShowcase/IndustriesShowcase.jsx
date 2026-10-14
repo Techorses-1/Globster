@@ -11,6 +11,13 @@ import {
 } from "lucide-react";
 import "./IndustriesShowcase.scss";
 
+import ecommerce from "../../../assets/images/industry/ecommerce.png";
+import startups from "../../../assets/images/industry/startups.png";
+import consultants from "../../../assets/images/industry/consult.png";
+import manufacturing from "../../../assets/images/industry/manufacturing.png";
+import realestate from "../../../assets/images/industry/realestate.png";
+import saas from "../../../assets/images/industry/saas.png";
+
 // NOTE: Replace these with your final production photography.
 // Placeholders are served from picsum.photos (seeded, so they stay
 // consistent) purely so the layout is visible while you wire up real assets.
@@ -18,7 +25,7 @@ import "./IndustriesShowcase.scss";
 const INDUSTRIES = [
   {
     icon: ShoppingCart,
-    image: "https://picsum.photos/seed/globster-ecommerce/900/700",
+    image: ecommerce,
     title: "E-commerce & Online Retail",
     oneLiner: "Keep Your Online Store Organized as You Grow",
     description:
@@ -33,7 +40,7 @@ const INDUSTRIES = [
   },
   {
     icon: Rocket,
-    image: "https://picsum.photos/seed/globster-startups/900/700",
+    image: startups,
     title: "Startups & Small Businesses",
     oneLiner: "Additional Support Without Adding Unnecessary Complexity",
     description:
@@ -48,7 +55,7 @@ const INDUSTRIES = [
   },
   {
     icon: Briefcase,
-    image: "https://picsum.photos/seed/globster-consultants/900/700",
+    image: consultants,
     title: "Coaches & Consultants",
     oneLiner: "Spend More Time With Clients and Less Time on Administration",
     description:
@@ -63,7 +70,7 @@ const INDUSTRIES = [
   },
   {
     icon: Factory,
-    image: "https://picsum.photos/seed/globster-manufacturing/900/700",
+    image: manufacturing,
     title: "Manufacturing & Distribution",
     oneLiner: "Organized Records for More Efficient Operations",
     description:
@@ -78,7 +85,7 @@ const INDUSTRIES = [
   },
   {
     icon: Building2,
-    image: "https://picsum.photos/seed/globster-realestate/900/700",
+    image: realestate,
     title: "Real Estate",
     oneLiner: "Keep Property Information and Administrative Work Organized",
     description:
@@ -93,7 +100,7 @@ const INDUSTRIES = [
   },
   {
     icon: Cloud,
-    image: "https://picsum.photos/seed/globster-saas/900/700",
+    image: saas,
     title: "SaaS & Technology Companies",
     oneLiner: "Operational Support for Growing Digital Businesses",
     description:

@@ -1,0 +1,709 @@
+// ==========================================================================
+// OurStory.scss
+// Fonts: Poppins (heading), Inter (body/UI), Roboto Slab (eyebrow/accent)
+// No clamp() — every breakpoint sets its own explicit values.
+// All classes are prefixed with .our-story — no conflicts.
+// ==========================================================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-navy: #1f2937;
+$color-orange: #283618;
+$color-surface: #f7f8fb;
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+$font-accent: "Roboto Slab", serif;
+
+.our-story {
+    position: relative;
+    width: 100%;
+    background: $color-white;
+    overflow: hidden;
+
+    &__inner {
+        max-width: 1320px;
+        margin: 0 auto;
+
+        --os-gutter: 90px;
+        padding-top: 120px;
+        padding-bottom: 120px;
+        padding-left: var(--os-gutter);
+        padding-right: var(--os-gutter);
+
+        @media (max-width: 1280px) {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            --os-gutter: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            --os-gutter: 44px;
+        }
+
+        @media (max-width: 768px) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            --os-gutter: 32px;
+        }
+
+        @media (max-width: 640px) {
+            padding-top: 56px;
+            padding-bottom: 56px;
+            --os-gutter: 20px;
+        }
+    }
+
+    // ==========================================================================
+    // TOP: image + story (2 columns)
+    // ==========================================================================
+
+    &__top {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: center;
+
+        gap: 90px;
+        margin-bottom: 90px;
+
+        @media (max-width: 1280px) {
+            gap: 64px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+            gap: 72px;
+            margin-bottom: 64px;
+        }
+
+        @media (max-width: 768px) {
+            gap: 64px;
+            margin-bottom: 56px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 56px;
+            margin-bottom: 44px;
+        }
+    }
+
+    // ==========================================================================
+    // Visual side
+    // ==========================================================================
+
+    &__visual {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        justify-self: center;
+        padding-bottom: 60px;
+
+        @media (max-width: 640px) {
+            padding-bottom: 44px;
+        }
+    }
+
+    &__dots {
+        position: absolute;
+        top: -26px;
+        right: -26px;
+        width: 150px;
+        height: 150px;
+        background-image: radial-gradient(rgba($color-orange, 0.35) 2px,
+                transparent 2px);
+        background-size: 18px 18px;
+        z-index: 0;
+
+        @media (max-width: 640px) {
+            width: 100px;
+            height: 100px;
+            top: -16px;
+            right: -10px;
+            background-size: 14px 14px;
+        }
+    }
+
+    &__frame {
+        position: absolute;
+        top: 24px;
+        left: -24px;
+        width: 86%;
+        height: 480px;
+        border: 2px solid rgba($color-orange, 0.55);
+        border-radius: 28px;
+        z-index: 0;
+
+        @media (max-width: 1280px) {
+            height: 440px;
+        }
+
+        @media (max-width: 640px) {
+            top: 16px;
+            left: -12px;
+            height: 330px;
+            border-radius: 20px;
+        }
+    }
+
+    &__image-main {
+        position: relative;
+        z-index: 1;
+        width: 86%;
+        height: 480px;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba($color-black, 0.16);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 1280px) {
+            height: 440px;
+        }
+
+        @media (max-width: 640px) {
+            height: 330px;
+            border-radius: 20px;
+        }
+    }
+
+    &__image-secondary {
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        bottom: 0;
+        width: 48%;
+        height: 260px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 6px solid $color-white;
+        box-shadow: 0 20px 44px rgba($color-black, 0.2);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 1280px) {
+            height: 230px;
+        }
+
+        @media (max-width: 640px) {
+            height: 170px;
+            border-width: 4px;
+            border-radius: 16px;
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        z-index: 3;
+        left: -18px;
+        bottom: 96px;
+        display: flex;
+        align-items: center;
+        background: $color-white;
+        border-radius: 16px;
+        box-shadow: 0 16px 36px rgba($color-black, 0.16);
+
+        padding: 12px 18px 12px 12px;
+        gap: 12px;
+
+        @media (max-width: 640px) {
+            left: -8px;
+            bottom: 70px;
+            padding: 10px 14px 10px 10px;
+            gap: 10px;
+            border-radius: 14px;
+        }
+    }
+
+    &__badge-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 12px;
+        width: 44px;
+        height: 44px;
+
+        @media (max-width: 640px) {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+    &__badge-text {
+        display: flex;
+        flex-direction: column;
+        font-family: $font-body;
+        line-height: 1.3;
+
+        strong {
+            font-family: $font-heading;
+            font-weight: 700;
+            color: $color-black;
+            font-size: 15px;
+        }
+
+        span {
+            color: rgba($color-black, 0.6);
+            font-size: 13px;
+        }
+
+        @media (max-width: 640px) {
+            strong {
+                font-size: 13.5px;
+            }
+
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+
+    // ==========================================================================
+    // Content side
+    // ==========================================================================
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-accent;
+        font-weight: 500;
+        color: $color-orange;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        @media (max-width: 640px) {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+    }
+
+    &__heading {
+        font-family: $font-heading;
+        font-weight: 700;
+        color: $color-black;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+
+        font-size: 40px;
+        margin: 0 0 22px;
+
+        @media (max-width: 1280px) {
+            font-size: 36px;
+        }
+
+        @media (max-width: 1024px) {
+            font-size: 34px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 26px;
+            line-height: 1.24;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__lead {
+        font-family: $font-body;
+        font-weight: 500;
+        color: rgba($color-black, 0.82);
+        line-height: 1.65;
+
+        font-size: 18px;
+        margin: 0 0 26px;
+
+        @media (max-width: 1024px) {
+            font-size: 17px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+    }
+
+    // ---- Workload grid ----
+    &__workload {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-bottom: 28px;
+
+        @media (max-width: 480px) {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+    }
+
+    &__workload-item {
+        display: flex;
+        align-items: center;
+        background: $color-surface;
+        border: 1px solid rgba($color-black, 0.07);
+        border-radius: 14px;
+        transition: border-color 0.25s ease, transform 0.25s ease,
+            box-shadow 0.25s ease;
+
+        padding: 14px 16px;
+        gap: 12px;
+
+        &:hover {
+            border-color: rgba($color-orange, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba($color-black, 0.07);
+        }
+
+        @media (max-width: 640px) {
+            padding: 12px 14px;
+            gap: 10px;
+            border-radius: 12px;
+        }
+    }
+
+    &__workload-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-white;
+        border: 1px solid rgba($color-orange, 0.25);
+        color: $color-orange;
+        border-radius: 10px;
+        width: 38px;
+        height: 38px;
+
+        @media (max-width: 640px) {
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    &__workload-text {
+        font-family: $font-body;
+        font-weight: 500;
+        color: $color-navy;
+        line-height: 1.4;
+
+        font-size: 14.5px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+
+    &__paragraph {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.68);
+        line-height: 1.75;
+
+        font-size: 16px;
+        margin: 0;
+
+        @media (max-width: 1024px) {
+            font-size: 15.5px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+    }
+
+    // ==========================================================================
+    // BOTTOM: full-width principles card
+    // Background is now $color-surface (#f7f8fb). Green only on icon tiles.
+    // ==========================================================================
+
+    &__principles {
+        position: relative;
+        background: $color-surface;
+        color: $color-black;
+        border: 1px solid rgba($color-black, 0.06);
+        border-radius: 28px;
+        overflow: hidden;
+
+        padding: 56px 56px 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -100px;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: rgba($color-black, 0.025);
+            pointer-events: none;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -140px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba($color-black, 0.02);
+            pointer-events: none;
+        }
+
+        @media (max-width: 1280px) {
+            padding: 48px 44px 0;
+        }
+
+        @media (max-width: 1024px) {
+            padding: 42px 34px 0;
+            border-radius: 24px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 30px 20px 0;
+            border-radius: 18px;
+        }
+    }
+
+    &__principles-label {
+        position: relative;
+        z-index: 1;
+        display: block;
+        text-align: center;
+        font-family: $font-accent;
+        font-style: italic;
+        color: rgba($color-black, 0.65);
+
+        font-size: 22px;
+        margin-bottom: 40px;
+
+        @media (max-width: 1024px) {
+            font-size: 19px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 16px;
+            margin-bottom: 22px;
+        }
+    }
+
+    &__principles-list {
+        position: relative;
+        z-index: 1;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+
+        @media (max-width: 1024px) {
+            gap: 18px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+    }
+
+    &__principle {
+        background: $color-white;
+        border: 1px solid rgba($color-black, 0.07);
+        border-radius: 20px;
+        box-shadow: 0 14px 30px rgba($color-black, 0.05);
+        transition: transform 0.3s ease, border-color 0.3s ease,
+            box-shadow 0.3s ease;
+
+        padding: 28px 26px;
+
+        &:hover {
+            border-color: rgba($color-black, 0.18);
+            box-shadow: 0 22px 44px rgba($color-black, 0.1);
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 1024px) {
+            padding: 24px 20px;
+            border-radius: 16px;
+        }
+
+        @media (max-width: 640px) {
+            padding: 20px 18px;
+        }
+    }
+
+    &__principle-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        @media (max-width: 640px) {
+            margin-bottom: 14px;
+        }
+    }
+
+    &__principle-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 14px;
+        width: 50px;
+        height: 50px;
+
+        @media (max-width: 640px) {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            svg {
+                width: 19px;
+                height: 19px;
+            }
+        }
+    }
+
+    &__principle-number {
+        font-family: $font-accent;
+        font-weight: 500;
+        color: rgba($color-black, 0.14);
+        line-height: 1;
+
+        font-size: 40px;
+
+        @media (max-width: 1024px) {
+            font-size: 34px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 30px;
+        }
+    }
+
+    &__principle-title {
+        font-family: $font-heading;
+        font-weight: 600;
+        color: $color-black;
+        line-height: 1.3;
+        margin: 0 0 8px;
+
+        font-size: 18px;
+
+        @media (max-width: 1024px) {
+            font-size: 16.5px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 15.5px;
+        }
+    }
+
+    &__principle-text {
+        font-family: $font-body;
+        font-weight: 400;
+        color: rgba($color-black, 0.66);
+        line-height: 1.6;
+        margin: 0;
+
+        font-size: 14.5px;
+
+        @media (max-width: 640px) {
+            font-size: 13.5px;
+        }
+    }
+
+    // ---- Closing quote (inside the surface card) ----
+    &__quote {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        border-top: 1px solid rgba($color-black, 0.08);
+
+        margin-top: 40px;
+        padding: 30px 0;
+        gap: 16px;
+
+        p {
+            font-family: $font-accent;
+            font-style: italic;
+            color: rgba($color-black, 0.78);
+            line-height: 1.6;
+            margin: 0;
+            max-width: 760px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            margin-top: 32px;
+            padding: 26px 0;
+
+            p {
+                font-size: 16.5px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            flex-direction: column;
+            text-align: center;
+            margin-top: 22px;
+            padding: 22px 0;
+            gap: 12px;
+
+            p {
+                font-size: 14.5px;
+            }
+        }
+    }
+
+    &__quote-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: $color-orange;
+        color: $color-white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+
+        @media (max-width: 640px) {
+            width: 34px;
+            height: 34px;
+        }
+    }
+}
